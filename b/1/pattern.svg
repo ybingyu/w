@@ -1,0 +1,13 @@
+<svg width="1000" height="1000" xmlns ="http://www.w3.org/2000/svg">
+    <!--先定义一个图案-->
+    <defs>
+        <pattern id="strip" patternUnits="userSpaceOnUse" x="0" y="0" width="6" height="6">
+            <path d="M0 0 L6 0" style="stroke: black;fill: none"/>
+        </pattern>
+        <pattern id="polkadot" patternUnits="userSpaceOnUse" x="0" y="0" width="36" height="36" >
+            <circle cx="12" cy="12" r="12" style="fill: url(#strip);stroke: black"/>
+        </pattern>
+    </defs>
+    <!--使用-->
+    <rect x="36" y="36" width="100" height="100" style="fill:url(#polkadot);stroke: black"/>
+</svg>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .move-wrap {
+            width: 180px;
+            border: 1px solid #eee;
+            /* background: linear-gradient(to right, rgb(170, 75, 107), rgb(107, 107, 131), rgb(59, 141, 153)); */
+        }
+    </style>
+</head>
+
+<body>
+    <svg class="move-wrap" height='300' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+        <path d="M0 150 
+                 C30 130,60 130, 90 150
+                 S150 170,180 150 
+                 S240 130,270 150
+                 S330 170,360 150
+                 V300 H0 Z" fill="rgba(0, 0, 50, .2)" stroke-width="3">
+            <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-180" dur="3s"
+                repeatCount="indefinite"></animateTransform>
+        </path>
+    </svg>
+</body>
+
+</html>

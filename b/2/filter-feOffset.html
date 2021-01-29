@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偏移滤镜-feOffset</title>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <filter id="offsetFilter1" x="-20" y="-20" width="200" height="200">
+                <feOffset in="SourceGraphic" dx="80" dy="20" />
+            </filter>
+        </defs>
+        <rect x="20" y="20" width="90" height="90" style="stroke: #9a12b3; fill: none; filter: url(#offsetFilter1);" />
+        <rect x="20" y="20" width="90" height="90" style="stroke: #1f3a93; fill: none; " />
+    </svg>
+</body>
+
+</html>

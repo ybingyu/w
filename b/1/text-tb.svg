@@ -1,0 +1,7 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="320" height="300">
+	<svg width="1000" height="1000">
+        <text x="20" y="15" style="fill:red;writing-mode:tb">Hello</text>
+    </svg>    
+</svg>

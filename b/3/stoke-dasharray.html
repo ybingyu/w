@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        svg path {
+            fill: none;
+            stroke: #000;
+        }
+
+        .l1 {
+            stroke-dasharray: 5;
+
+        }
+
+        .l2 {
+            stroke-dasharray: 5 10;
+        }
+
+        .l3 {
+            stroke-dasharray: 5 10 3;
+        }
+    </style>
+</head>
+
+<body>
+    <svg viewBox="0 0 70 10" width="300" height="100">
+        <path d="M2,2 L60,2" class="l1"></path>
+    </svg>
+    <br>
+    <svg viewBox="0 0 70 10" width="300" height="100">
+        <path d="M2,2 L60,2" class="l2"></path>
+    </svg>
+    <br>
+    <svg viewBox="0 0 70 10" width="300" height="100">
+        <path d="M2,2 L60,2" class="l3"></path>
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<text x="50" y="53" style="font-size:14px;" fill="#ccc">Base line: </text>
+	<line x1="150" y1="50" x2="400" y2="50" stroke="red" />
+	<text x="150,170,190,210,230" y="50,70,90,110,120">SVG Text</text>
+</svg>

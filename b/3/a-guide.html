@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <svg viewBox="0 -30 800 400"  width="800" height="400" class="svg-hand">
+       <!--动画路径-->
+       <path id="animation-hand-arc"
+           d="m0.75,182.7868c1.12058,-1.01676 63.87318,-185.04966 273.42203,-181.99939c209.54885,3.05027 265.57796,180.98263 265.57796,180.52191"
+           stroke="#fff" fill="transparent" />
+        <g id="hand">
+            <!--手上的圆圏-->
+            <circle cx="0" cy="0" r="10" fill="yellow"></circle>
+            <!--手的形状-->
+             <image x="0" y="0" width="90" height="74" xlink:href="sz.png"></image>
+        </g>
+        <!--动画设置-->
+        <animateMotion id="arcmove" xlink:href="#hand" dur="3s" begin="0" fill="freeze" repeatCount="indefinite">
+            <mpath xlink:href="#animation-hand-arc" />
+        </animateMotion>
+    </svg>
+</body>
+</html>

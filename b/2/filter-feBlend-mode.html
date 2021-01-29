@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混合滤镜-feBlend-mode</title>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <filter id="spotlight">
+                <!-- feFlood 提供了一个纯色区域。我们只需提供 flood-color 和 flood-opacity -->
+                <feFlood result="floodFill" x="0" y="0" width="100%" height="100%" flood-color="green"
+                    flood-opacity="1" />
+                <!-- mode="multiply" -->
+                <!-- 正片叠底模式（multiply） -->
+                <!-- 滤色模式(screen) -->
+                <!-- 变暗模式(darken) -->
+                <!-- 变亮模式(lighten) -->
+                <feBlend in="SourceGraphic" in2="floodFill" />
+            </filter>
+        </defs>
+
+        <image xlink:href="https://img2020.cnblogs.com/blog/1308525/202010/1308525-20201015102541799-1501137232.png"
+            x="10%" y="10%" width="80%" height="80%" style="filter:url(#spotlight);" />
+
+    </svg>
+</body>
+
+</html>

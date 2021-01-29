@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mask</title>
+</head>
+<body>
+    <svg>
+        <defs>
+            <!-- 定义一个 渐变 从白到黑 -->
+            <linearGradient id='white2black'>
+                <stop offset="0" stop-color="white"></stop>
+                <stop offset="100%" stop-color="black"></stop>
+            </linearGradient>
+            <mask id="small-rect">
+                <rect x="0" y="0" width="400" height="300" fill="url(#white2black)"></rect>
+            </mask>
+        </defs>
+        <!-- 后矩形 蓝色 -->
+        <rect id="back" x="0" y="0" width="400" height="300" fill="#d4fcff"></rect>
+        <!-- 前矩形 粉色 -->
+        <rect id="front" x="0" y="0" width="400" height="300" fill="#fcd3db" mask="url(#small-rect)"></rect>
+    </svg>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mask 1</title>
+    <style>
+        circle:hover {
+            opacity: 0.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <svg width="200" height="200" style="outline: 5px solid #e6e6e6">
+        <defs>
+            <!-- 定义一个白色的矩形  -->
+            <mask id="rect">
+                <rect x="0" y="0" width="80" height="80" fill="#fff"  />
+            </mask>
+        </defs>
+        <circle cx="60" cy="60" r="50" fill="#34538b" mask="url(#rect)" />
+    </svg>
+</body>
+
+</html>

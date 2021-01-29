@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    svg {
+        width: 400px;
+        height: 300px;
+        margin: 200px;
+    }
+</style>
+</head>
+
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <rect id="rect" x="0" y="0" width="40" height="40" fill="green">
+        </rect>
+        <line x1="0" y1="0" x2="100" y2="0" stroke="#000"></line>
+        <animate xlink:href="#rect" attributeName="x" from="0" to="50" dur="5s" begin="0s" fill="freeze"/>
+        <!-- additive="replace|sum" -->
+        <animate xlink:href="#rect" attributeName="x" from="0" to="100" dur="5s" begin="0s" fill="freeze"
+            additive="sum"/>
+    </svg>
+</body>
+</html>

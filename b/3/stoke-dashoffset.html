@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        svg path {
+            fill: none;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+
+
+            stroke-dasharray: 10;
+
+
+            /* 改这个值： */
+            stroke-dashoffset: 60;
+            transition: all 1s;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <svg viewBox="0 0 70 10" width="300" height="100">
+        <path d="M2,2 L60,2" class="l1"></path>
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多重滤镜feMerge</title>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <filter id="blurFilter2" y="-10" height="40" x="-10" width="150">
+                <feOffset in="SourceAlpha" dx="3" dy="3" result="offset2" />
+                <feGaussianBlur in="offset2" stdDeviation="3" result="blur2" />
+
+                <feMerge>
+                    <feMergeNode in="blur2" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+        <ellipse cx="55" cy="60" rx="25" ry="15" style="stroke: none; fill: #0000ff; filter: url(#blurFilter2);" />
+    </svg>
+</body>
+
+</html>

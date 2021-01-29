@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViewBox</title>
+</head>
+
+<body>
+    <svg id="svg" width="400" height="200" viewBox="0 0 200 200" style="border:1px solid #cd0000;">
+        <rect x="10" y="10" width="180" height="180" fill="#cd0000" />
+    </svg>
+    <p><input type="radio" id="radio0" name="ratio" value="" checked><label for="radio0">无preserveAspectRatio</label>
+    </p>
+    <p><input type="radio" id="radio1" name="ratio" value="meet"><label for="radio1">meet</label></p>
+    <p><input type="radio" id="radio2" name="ratio" value="slice"><label for="radio2">slice</label></p>
+    <p><input type="radio" id="radio3" name="ratio" value="none"><label for="radio3">none</label></p>
+    <script>
+        var svg = document.getElementById("svg");
+        svg && [].slice.call(document.querySelectorAll("input[type=radio]")).forEach(function (radio) {
+            radio.addEventListener("click", function () {
+                var value = this.value;
+                if (value == "") {
+                    svg.removeAttribute("preserveAspectRatio");
+                    return;
+                }
+                if (value != "none") {
+                    value = "xMinYMin " + value;
+                }
+                svg.setAttribute("preserveAspectRatio", value);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- Q x1 y1, x y (or q dx1 dy1, dx dy) -->
+  <!-- x1, y1 是曲线控制点坐标 -->
+  <!-- x, y 是曲线终点的坐标 -->
+  <path d="M10 80 Q 52.5 10, 95 80"   stroke="red" fill="none"/>
+  <!-- points -->
+  <circle cx="10" cy="80" r="2" />
+  <circle cx="52.5" cy="10" r="2" />
+  <circle cx="95" cy="80" r="2" />
+</svg>

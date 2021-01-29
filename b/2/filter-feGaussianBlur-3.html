@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高斯模糊滤镜-SourceAlpha</title>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <filter id="blurFilter8" x="-20" y="-20" width="200" height="200">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+            </filter>
+        </defs>
+        <rect x="20" y="20" width="90" height="90" style="stroke: none; fill: #00ff00; filter: url(#blurFilter8);" />
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            fill: none;
+            stroke-width: 1px;
+            stroke-dashoffset: 7%;
+            stroke-dasharray: 0 35%;
+        }
+
+        .logo-name-text-1 {
+            stroke: #9C27B0;
+            animation: animation 3s linear forwards;
+        }
+
+        .logo-name-text-2 {
+            stroke: #E91E63;
+            animation: animation2 3s linear forwards;
+        }
+
+        @keyframes animation {
+            100% {
+                stroke-dasharray: 7%;
+
+                stroke-dashoffset: 7%;
+                /* 错开 */
+            }
+        }
+
+        @keyframes animation2 {
+            100% {
+                stroke-dasharray: 7%;
+                stroke-dashoffset: 14%;
+                /* 错开 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="600" height="300" viewBox="0 0 200 100">
+        <symbol id="txt">
+            <text text-anchor="middle" x="50%" y="50%">
+                99 网站中心
+            </text>
+        </symbol>
+        <use xlink:href="#txt" class="logo logo-name-text-1"></use>
+        <use xlink:href="#txt" class="logo logo-name-text-2"></use>
+    </svg>
+</body>
+
+</html>

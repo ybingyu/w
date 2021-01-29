@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>animate</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <svg width="500" height="650">
+        <!-- 参考点 -->
+        <circle id="" r="1" cx="60" cy="60" fill="red" />
+        <!-- 旋转 -->
+        <rect x="20" y="50" width="15" height="34" fill="blue" stroke="black" stroke-width="1" >
+            <animateTransform attributeType="XML" attributeName="transform" begin="0s" dur="5s" type="rotate"
+                from="0 60 60" to="360 60 60" repeatCount="indefinite" />
+        </rect>
+
+        <circle id="circle" r="25" cx="100" cy="130" fill="tomato" />
+        <!-- 放大1.5 -->
+        <animateTransform attributeName="transform" attributeType="XML" type="scale" values="1;1.5;1" dur="3s"
+            repeatCount="indefinite" xlink:href="#circle" />
+        <!-- 位移 -->
+        <circle id="circle2" r="25" cx="100" cy="300" fill="tomato" />
+         <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0;100 0" dur="3s" repeatCount="indefinite" xlink:href="#circle2" />
+
+
+    </svg>
+</body>
+
+</html>

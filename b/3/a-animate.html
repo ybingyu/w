@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>animate</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <svg width="500" height="350" >
+        <circle id="circle" r="25" cx="100" cy="100" fill="tomato" />
+        <!-- 组合 -->
+        <!-- cx持续从100移动到200 -->
+        <animate attributeName="cx" from="100" to="200" begin="0s" dur="3s" repeatCount="indefinite"
+            xlink:href="#circle" />
+        <!-- 透明度从1到0 -->
+        <animate attributeName="opacity" from="1" to="0" begin="0s" dur="3s" repeatCount="indefinite"
+            xlink:href="#circle" />
+    </svg>
+</body>
+
+</html>

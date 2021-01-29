@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clip css</title>
+</head>
+<body>
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="clipPath">
+                <!-- 定义剪裁路径 -->
+               <circle cx="160" cy="160" r="160"  />
+            </clipPath>
+        </defs>
+    </svg>
+    <img src="https://www.w3cplus.com/sites/default/files/blogs/2014/1407/flowers.jpg" alt=""
+        style="clip-path: url(#clipPath);">
+</body>
+</html>

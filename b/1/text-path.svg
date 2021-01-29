@@ -1,0 +1,9 @@
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<path id="a1" d="M10 80 Q 52.5 10, 95 80 T 180 80" stroke="red" fill="none"/>
+	<defs>
+        <path id="a1" d="M10 80 Q 52.5 10, 95 80 T 180 80" />
+    </defs>
+    <text>
+        <textPath xlink:href="#a1">文字跟随路径排版，哈哈哈哈哈~</textPath>
+    </text> 
+</svg>

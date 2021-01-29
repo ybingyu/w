@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .circle {
+            transform: rotate(-90deg);
+            transform-origin: 120px 120px;
+        }
+
+        .progress1 {
+            animation: pro-dasharray 3s both infinite;
+        }
+
+        .progress2 {
+            stroke-dasharray: 692;
+            animation: pro-dashoffset 3s both infinite;
+        }
+
+        @keyframes pro-dasharray {
+            from {
+                stroke-dasharray: 0 692px;
+            }
+
+            to {
+                stroke-dasharray: 692px 692px;
+            }
+        }
+
+        @keyframes pro-dashoffset {
+            0% {
+                stroke-dashoffset: 692;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="300" height="300">
+        <circle cx="120" cy="120" r="110" fill="none" stroke="#eee" stroke-width="10" />
+        <circle class="circle progress1" cx="120" cy="120" r="110" stroke="#69f" fill="none" stroke-width="10"
+            stroke-linecap="round" />
+    </svg>
+
+    <svg width="300" height="300">
+        <circle cx="120" cy="120" r="110" fill="none" stroke="#eee" stroke-width="10" />
+        <circle class="circle progress2" cx="120" cy="120" r="110" stroke="#b081ff" fill="none" stroke-width="10"
+            stroke-linecap="round" />
+    </svg>
+
+</body>
+
+</html>

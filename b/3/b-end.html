@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <svg width="500" height="500" >
+        <circle r="100" cx="250" cy="250" stroke="#FF4E00" stroke-width="1" fill="#fff">
+        </circle>
+        <circle r="10" cx="0" cy="0" fill="#00FF4E" stroke="none">
+            <animateMotion begin="0s" end="ps.click"
+                path="M 250,350 A 100,100 0 0 0 250,150 A 100,100 0 0 0 250,350" dur="5s" fill="freeze"
+                repeatCount="indefinite">
+            </animateMotion>
+        </circle>
+        <text x="200" y="400" id="ps" cursor="pointer">暂停</text>
+    </svg>
+
+
+
+
+</body>
+
+</html>

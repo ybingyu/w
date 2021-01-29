@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        svg path {
+            fill: none;
+            stroke: #000;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+
+
+            /* 描边虚实设置成实线部分与图形描边长度相同 */
+            stroke-dasharray: 60;
+            /* 再偏移相同的长度 */
+            stroke-dashoffset: 60;
+            transition: all 1s;
+        }
+
+        svg:hover path {
+            stroke-dashoffset: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <svg viewBox="0 0 70 10" width="300" height="300">
+        <path d="M2,2 L62,2" id="p"></path>
+    </svg>
+    <script>
+        //获取路径长度
+        const p = document.getElementById('p');
+        console.log(p.getTotalLength());
+    </script>
+</body>
+
+</html>

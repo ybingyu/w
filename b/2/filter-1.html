@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一个滤镜例子</title>
+</head>
+
+<body>
+    <svg width="400" height="400">
+        <defs>
+            <!-- 思考这个xy值-滤镜的边界 -->
+            <!-- y="-5" height="50" x="-5" width="50" -->
+            <filter id="blurFilter" y="-5" height="50" x="-5" width="50">
+                <!-- 模糊 -->
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+            </filter>
+        </defs>
+
+        <ellipse cx="55" cy="60" rx="25" ry="15" style="stroke: none; fill: #663399; " />
+
+        <ellipse cx="155" cy="60" rx="25" ry="15" style="stroke: none; fill: #663399; filter: url(#blurFilter);" />
+    </svg>
+</body>
+
+</html>

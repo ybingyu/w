@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <svg width="500" height="350" >
+        <circle id="circle" r="25" cx="100" cy="100" fill="tomato" />
+        <animate attributeName="cx" from="100" to="0" begin="0s" dur="3s" xlink:href="#circle" id="a" />
+
+
+        <!-- 连续运动两次 -->
+        <circle id="circle2" r="25" cx="100" cy="200" fill="tomato" />
+        <animate attributeName="cx" from="100" to="0" begin="0s;3s" dur="3s" xlink:href="#circle2"  id="a2"/>
+
+
+
+        <!-- a2动画第一次结束时开始 -->
+        <circle cx="100" cy="300" r="0" style="fill:#d7006f">
+            <animate attributeName="r" from="0" to="30" begin="a2.end" dur="1s" fill="freeze"></animate>
+        </circle>
+    </svg>
+
+
+
+
+</body>
+
+</html>
