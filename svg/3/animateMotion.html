@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分段路径动画</title>
+</head>
+
+<body>
+    <!-- http://www.htmleaf.com/Demo/201601223060.html -->
+    <!-- https://aotu.io/notes/2017/01/22/snapsvg/index.html -->
+    <svg width="500" height="350" id="svgDoc">
+        <circle id="circle" r="20" cx="0" cy="0" fill="tomato" />
+
+    </svg>
+    <a href="javascript:;" id='btn'>click</a>
+    <script src="http://demo.htmleaf.com/1601/201601222026/js/snap.svg-min.js"></script>
+    <script>
+        var map = Snap('#svgDoc');
+        var circle = map.select('#circle');
+        circle.transform('translate(' + 50 + ',' + 50 + ')');
+
+
+        var path =
+            map.path('M50 50 l110 110 l200 -50 l50 100').attr({
+                'fill': 'none',
+                'stroke': '#000000'
+            });
+        var pathLength = Snap.path.getTotalLength(path);
+        console.log(pathLength)
+        var lastPoint = path.getPointAtLength(pathLength);
+
+        var a = [
+            [0, 155],
+            [155, 360],
+            [360, pathLength]
+        ]
+        var i = 0;
+
+        function ani(index) {
+            var begin = a[index][0]
+            var end = a[index][1]
+            Snap.animate(begin, end, function (step) {
+                moveToPoint = Snap.path.getPointAtLength(path, step);
+                x = moveToPoint.x
+                y = moveToPoint.y
+                circle.transform('translate(' + x + ',' + y + ')');
+            }, (end - begin) * 10, mina.linear, function () {
+
+            });
+        }
+
+        // ani(0)
+
+
+        document.getElementById('btn').onclick = function () {
+            ani(i++)
+        }
+    </script>
+</body>
+
+</html>
