@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截取视频第一帧</title>
+</head>
+
+<body>
+
+    <label><input name="pos" type="radio" value="1" checked />第一帧 </label>
+    <label><input name="pos" type="radio" value="2" />最后一帧 </label>
+
+    <br>
+    <input type="file" id="upload-ipt" accept="video/*" />
+    
+    <div id="box" style="display: none;"></div>
+    <br>
+
+    <img src="" id="img" alt="" srcset="">
+    <script src="jquery-2.0.2.min.js"></script>
+    <script>
+        function chooseVideo(e) {
+            var that = this;
+            var obj_file = document.getElementById("upload-ipt");
+            var file = obj_file.files[0];
+            var blob = new Blob([file]), // 文件转化成二进制文件
+                url = URL.createObjectURL(blob); //转化成url
+            var $video = $('<div><video controls src="' + url + '"></video></div><div></div>');
+            $("#box").html($video);
+            var videoElement = $("video")[0];
+            videoElement.play()
+            videoElement.addEventListener("canplay", function (_event) {
+                var pos = $('input[name="pos"]:checked').val()
+                if (pos == 1) {
+                    videoElement.currentTime = 0
+                } else {
+                    videoElement.currentTime = videoElement.duration //最后一帧
+                }
+
+                var canvas = document.createElement("canvas");
+                canvas.width = videoElement.videoWidth;
+                canvas.height = videoElement.videoHeight;
+                canvas.getContext("2d").drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                $('#img').attr('src', canvas.toDataURL("image/png"))
+                // console.log(canvas.toDataURL("image/png")); //第一帧图片url
+            })
+        }
+        $('#upload-ipt').change(chooseVideo)
+    </script>
+</body>
+
+</html>
