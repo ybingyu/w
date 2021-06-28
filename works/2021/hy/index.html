@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta content="minimal-ui,width=750, user-scalable=no, viewport-fit=cover" name="viewport" id="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no, email=no" />
+<!-- UC默认竖屏 ，UC强制全屏 -->
+<meta name="full-screen" content="yes" />
+<meta name="browsermode" content="application" />
+<!-- QQ强制竖屏 QQ强制全屏 -->
+<meta name="x5-orientation" content="portrait" />
+<meta name="x5-fullscreen" content="true" />
+<meta name="x5-page-mode" content="app" />
+<script src="https://moba.99.com/script/public.js?v2"></script>
+<title>狐妖小红娘X英魂之刃联动H5活动
+</title>
+<meta name="Description"
+    content="《英魂之刃》是一款类DOTA的多人竞技网游，拥有无需下载，即点即玩，10秒开局，qq登录，精美画面，爽快体验等游戏特色和优势。进入游戏后，即可体验充满魔幻风格的游戏世界，领略原创英雄角色和强力技能，在还原三路5V5经典模式的同时，更创新单路决战之谷模式，出门即可10人团战，最快享受激情团战体验！并且还有一端双玩法全新RPG、PVE模式，与玩家一起打造巅峰战场。游戏入驻腾讯QQ游戏大厅后，更是人气飙升，是中国风第一DOTA网游">
+<meta name="Keywords"
+    content="英魂之刃，英魂之刃官方网站，英魂之刃官网，DOTA页游，英魂，英魂之刃下载，微端下载，英魂之刃礼包，新手礼包，新英雄，活跃度，微信，龙骑士，绑定，英魂视频，比赛，周免，英魂之刃攻略，MOBA，即下即玩，无需注册，10秒加载,30秒开局，dota网页版，英雄出装，5v5,10v10，RPG,PVE，兑换码，中国风，魔幻，黄金十二宫，兑换码，天赋，LOL网页版，竞技游戏">
+<link rel="shortcut icon" href="https://img5.99.com/moba/images/index/v2/favicon.ico">
+<meta name="author" content="bindy(128080) | 2021-05-17" />
+<link href="css/style.css" rel="stylesheet" />
+<style id="ratioCss"></style>
+<script>
+    var zoomUA = navigator.userAgent.toLowerCase();
+    var zoomHeight = 0;
+
+    function zoom(width, height) {
+        var ratio; //缩放比例
+        var docEl = document.documentElement;
+        var clientWidth = docEl.clientWidth;
+        if (zoomUA.match(/android/i) || zoomUA.match(/oppo/i)) {
+            zoomHeight = docEl.clientHeight - window.innerHeight;
+        }
+        var clientHeight = docEl.clientHeight - zoomHeight * window.devicePixelRatio;
+        var ratioClient = clientWidth / clientHeight;
+        var ratioObj = width / height;
+        if (ratioObj >= ratioClient) {
+            ratio = clientWidth / width;
+        } else {
+            ratio = clientHeight / height;
+        }
+        var backRatio = 1 //ratio>1?1: 1/ratio;
+        document.getElementById("ratioCss").innerHTML = ".scale{-webkit-transform: translate(-50%,-50%) scale(" +
+            ratio +
+            "); transform: translate(-50%,-50%) scale(" + ratio + ");margin-top:-" + zoomHeight + "px}"
+    }
+
+    function zoomHtml(width) {
+        document.querySelector('meta[name="viewport"]').content = 'minimal-ui,width=' + width +
+            ', user-scalable=0, viewport-fit=cover';
+    }
+    //控制viewport的值，避免ios旋转放大bug
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+        setTimeout(function () {
+            document.querySelector('meta[name="viewport"]').content = ''
+        }, 200);
+        setTimeout(function () {
+            zoomHtml(750);
+            zoom(750, 1335);
+        }, 310);
+    }, false);
+    //解决关闭/开启屏幕 页面放大bug
+    window.addEventListener("webkitvisibilitychange", function () {
+        zoomHtml(750);
+        zoom(750, 1335);
+    }, false);
+    zoom(750, 1335);
+    window.onpageshow = function (evt) {
+        setTimeout(function () {
+            zoom(750, 1335);
+        }, 300);
+    };
+</script>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script> 
+<script>
+  var vConsole = new VConsole();
+</script>
+</head>
+
+<body>
+    <div id="app" class="app app-index" :class="{wmini:isWmini}">
+        <!--tip-->
+<div class="tip hide" id="tip">
+    <span>为了更好的体验，请将手机/平板竖起来！</span>
+</div>
+        <div class="load " :class="{active:load,end:loadEnd}">
+            <div class="scale">
+                <a href="javascript:;" class="btn" @click="clickLoadEnd()"></a>
+                <div class="logo">
+    <span class="logo-1"></span>
+    <span class="logo-2"></span>
+    <span class="logo-3">
+        <script>
+            Public.setLogo(true)
+        </script>
+    </span>
+</div>
+                <div class="bar">
+                    <span class="cur" :style="{width:loadP+'%'}">
+                        <em class="head">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </em>
+                    </span>
+                    <p class="num">...{{loadP+'%'}}...</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="main" :class="{active:!load}">
+            <a href="javascript:;" class="music" @click="clickMusic" :class="{off:!isPlay}"></a>
+            <a href="javascript:;" class="btn-jump no-scale" @click="clickJumpVideo"
+                v-if=" showJump && (activePage == 'cut'||activePage=='chose')"></a>
+            <span class="home" @click="clickToHome" v-if="activePage != 'index'&&activePage!='game'"></span>
+            <!-- 首页 -->
+            <div class="index vid layer" :class="{end:pageEnd['index'],active:activePage=='index'}">
+                <div class="scale">
+                    <video :src="video.index1.src" :loop="video.index1.loop" id="index1Video"
+                        :poster="video.index1.poster" preload="auto" autoplay x5-video-player-type="h5"
+                        x5-video-player-fullscreen="true" webkit-playsinline="" x-webkit-airplay="true" airplay="allow"
+                        playsinline="" class="video video-1" :class="{hid:!video.index1.visibility}"
+                        muted='true'></video>
+                    <video :src="video.index2.src" :loop="video.index2.loop" id="index2Video"
+                        :poster="video.index2.poster" preload="auto" x5-video-player-type="h5"
+                        x5-video-player-fullscreen="true" webkit-playsinline="" x-webkit-airplay="true" airplay="allow"
+                        playsinline="" class="video video-2" :class="{hid:!video.index2.visibility}"
+                        muted='true'></video>
+                    <!--   <video
+                            :src="video.index3.src" :loop="video.index3.loop" id="index3Video" preload="auto"
+                            x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline=""
+                            x-webkit-airplay="true" airplay="allow" playsinline=""
+                            class="video" :class="{hid:!video.index3.visibility}"></video> -->
+                    <!--  :class="{active:indexBtnStart}" -->
+                    <div class="cont" :class="{active:!load}">
+                        <div class="logo">
+    <span class="logo-1"></span>
+    <span class="logo-2"></span>
+    <span class="logo-3">
+        <script>
+            Public.setLogo(true)
+        </script>
+    </span>
+</div>
+
+                        <div class="slogan"></div>
+                        <p class="time">活动时间：2021年6月15日-2021年7月4日</p>
+                        <span class="btn btn-start" @click="clickToCut"></span>
+                    </div>
+                    <div class="flower">
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+    <i></i>
+</div>
+                </div>
+                <div class="side no-scale">
+                    <a href="javascript:;" class="btn btn-rule" @click="showPop('rule')"></a>
+                    <a href="javascript:;" class="btn btn-history" @click="showPop('record')"></a>
+                </div>
+            </div>
+            <!-- 混剪 -->
+            <div class="layer cut" :class="{end:pageEnd['cut'],active:activePage=='cut',btnshow:canChose}">
+                <div class="scale">
+                    <video :src="video.cut.src" :loop="video.cut.loop" id="cutVideo" :poster="video.cut.poster"
+                        preload="auto" x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline=""
+                        muted='false' x-webkit-airplay="true" airplay="allow" playsinline="" class="video"
+                        :class="{hid:!video.cut.visibility}"></video>
+                    <video :src="video.chose.src" :loop="video.chose.loop" id="choseVideo" :poster="video.chose.poster"
+                        preload="auto" x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline=""
+                        muted='false' x-webkit-airplay="true" airplay="allow" playsinline="" class="video"
+                        :class="{hid:!video.chose.visibility}" :class="{hid:!video.chose.visibility}"></video>
+                    <div class="cont">
+                        <span class="call call-1" @click="clickCall(1)"></span>
+                        <span class="call call-2" @click="clickCall(2)"></span></div>
+                </div>
+            </div>
+            <!-- 为谁助力 -->
+            <!--  <div class="layer chose" :class="{active:activePage=='chose'}">
+                <div class="scale">
+                    <video :src="video.chose.src" :loop="video.chose.loop" id="choseVideo"
+                        :poster="video.chose.poster" preload="auto"
+                        x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline=""
+                        muted='false' x-webkit-airplay="true" airplay="allow" playsinline="" class="video"
+                        :class="{hid:!video.chose.visibility}" :class="{hid:!video.chose.visibility}"
+                        ></video>
+                    
+                </div>
+            </div> -->
+            <!-- 选择助力神器 -->
+            <div class="layer tools" :class="{active:activePage=='tools'}">
+                <div class="scale">
+                    <div class="tips"></div>
+                    <div class="yw"></div>
+                    <div class="tool-list" :class="{'tool-list-1':curChoseCP==1,'tool-list-2':curChoseCP==2}">
+                        <div class="tool tool-1">
+                            <img :src="toolimg1" alt="" class="img">
+                            <!-- 使用 -->
+                            <span class="btn btn-use" @click="clickTool(1)"></span>
+                            <p class="text">
+                                <span class="name">{{toolName[curChoseCP][1].n}}</span>
+                                <span class="desc">每日登录活动界面可获得</span>
+                            </p>
+                        </div>
+                        <div class="tool tool-2">
+                            <img :src="toolimg2" alt="" class="img">
+                            <!-- 使用 -->
+                            <span class="btn btn-use" v-if="toolState[curChoseCP][2]" @click="clickTool(2)"></span>
+                            <!-- 去获得 -->
+                            <span class="btn btn-get" v-if="!toolState[curChoseCP][2]" @click="clickGetTool(2)"></span>
+                            <p class="text">
+                                <span class="name">{{toolName[curChoseCP][2].n}}</span>
+                                <span class="desc">每日分享并邀请1名好友热力助力可获得</span>
+                            </p>
+                        </div>
+                        <div class="tool tool-3">
+                            <img :src="toolimg3" alt="" class="img">
+                            <!-- 使用 -->
+                            <span class="btn btn-use" v-if="toolState[curChoseCP][3]" @click="clickTool(3)"></span>
+                            <!-- 去获得 -->
+                            <span class="btn btn-get" v-if="!toolState[curChoseCP][3]" @click="clickGetTool(3)"></span>
+                            <p class="text">
+                                <span class="name">{{toolName[curChoseCP][3].n}}</span>
+                                <span class="desc">每日完成1场<br>
+                                    对应游戏相应模式的对局即可获得</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 助力画面 -->
+            <div class="layer game"
+                :class="{active:activePage=='game','game-1':curChoseCP==1,'game-2':curChoseCP==2,start:countdown==0}">
+                <div class="scale">
+                    <!-- 游戏准备 -->
+                    <div class="countdown" :class="cdCls">
+                    </div>
+                    <p class="tips bottom"></p>
+                    <!-- 游戏开始 -->
+                    <p class="tips top"></p>
+                    <p class="time">{{gameTime}}</p>
+                    <p class="tips shake"></p>
+                    <div class="hand" :class="gameHandCls"></div>
+                </div>
+            </div>
+            <!-- 结果分享 -->
+            <div class="layer result" id="result" :class="{active:activePage=='result'}">
+                <!-- 用于显示 -->
+                <div class="scale">
+                    <!-- TODO: -->
+                    <!-- <div class="logo">
+                        <span class="logo-1"></span>
+                        <span class="logo-2"></span>
+                        <span class="logo-3">
+                            <img src="image/logo-v4.png" alt="">
+                        </span>
+                    </div> -->
+                    <div class="logo">
+    <span class="logo-1"></span>
+    <span class="logo-2"></span>
+    <span class="logo-3">
+        <script>
+            Public.setLogo(true)
+        </script>
+    </span>
+</div>
+                    <div class="info">
+                        <div class="head">
+                            <!-- 头像 -->
+                            <img :src="user.avatar" alt="">
+                        </div>
+                        <p class="name">{{user.nickname}}</p>
+                        <p class="talk">狐妖小红娘X英魂之刃联动7月2日高甜来袭！
+                            <br>
+                            我已热力助力<b>{{gameCountTime}}秒</b>，超越<b>{{gameRankNum}}%</b>的玩家！<br>即刻扫码和我一起加入助力赢实物周边及海量大礼吧！
+                        </p>
+                        <div class="code">
+                            <!-- <div class="img"><img src="https://img9.99.com/moba/images/index/v2/ewm-xcx.jpg" alt=""> -->
+                             <div class="img"><img src="https://img6.99.com/moba/images/act/2021/hy/code-bg.png" alt="">
+                            </div>
+                            <span>通过微信扫码进入活动</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 用于生成 -->
+                <div class="no-scale">
+                    abc
+                </div>
+                <img :src="screenImg" class="screen" id="screen" alt="">
+            </div>
+        </div>
+        <audio :src="audioSrc" preload="auto" autoplay loop="loop" id="audio"></audio>
+        <!-- <audio :src="btnAudioSrc" preload="auto" autoplay id="effectBtn"></audio> -->
+        <!-- <audio :src="btnAudioSrc" preload="auto" autoplay id="effectBtn"></audio> -->
+        <!-- 初级二次确认 -->
+<div class="pop pop-tool-sure" :class="{active:pop.toolSure}">
+    <div class="pop-main">
+        <!-- <a class="pop-close " href="javascript:;"></a> -->
+        <div class="img">
+            <img :src="curToolSrc" alt="">
+        </div>
+        <p class="name">{{toolName[curChoseCP][curTool].n}}</p>
+        <p class="sub-name">{{toolName[curChoseCP][curTool].t}}热力助力道具</p>
+        <p class="tips">
+            每日只有1次抽奖机会<br>
+            使用更高级的助力道具有更高概率抽到周边奖励哦！
+        </p>
+        <p class="tips-sure" v-if="curTool!=3">仍然使用 <b>{{toolName[curChoseCP][curTool].t}}助力道具</b> 进行助力吗？</p>
+        <p class="tips-sure" v-if="curTool==3"></p>
+        <div class="btns">
+            <span class="btn btn-pink" @click="closePop()">返 回</span>
+            <span class="btn btn-yellow" @click="clickToGame()">确 定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 分享助力 -->
+<div class="pop pop-share-get" :class="{active:pop.shareGet}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <div class="cont">
+            <p class="txt">点击分享给你的好友</p>
+            <p class="txt big">邀请Ta助力~</p>
+        </div>
+        <span class="btn btn-yellow" @click="showShareTips">点击分享</span>
+    </div>
+</div>
+<!-- 绑定 -->
+<div class="pop pop-bind-state" :class="{active:pop.bindState}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop('bindState')"></a>
+        <p class="top-txt">完成1场英魂之刃对应模式胜利<br>或完成1场英魂之刃口袋版相应模式对局即可获得</p>
+        <div class="version">
+            <div class="game">
+                <p class="name">英魂之刃 </p>
+                <p class="txt">
+                    纷争圣坛非人机匹配
+                </p>
+                <!-- 已绑定 -->
+                <dl class="bind-info" v-if="bindPc">
+                    <dt>昵称</dt>
+                    <dd>名字这么长这么长</dt>
+                    <dt>服务器</dt>
+                    <dd>名字这么</dt>
+                </dl>
+                <!-- 未绑定 -->
+                <div class="unbind" v-if="!bindPc">
+                    <p>--------- 未绑定 ---------</p>
+                    <span class="btn btn-yellow" @click="toBindPc">前往绑定</span>
+                </div>
+            </div>
+            <div class="game">
+                <p class="name">英魂之刃口袋版 </p>
+                <p class="txt">
+                    纷争5V5-普通匹配<br>
+                    决战5V5-中间单路的匹配<br>
+                    排位赛、锦标赛
+                </p>
+                <!-- 已绑定 -->
+                <dl class="bind-info" v-if="bindKd">
+                    <dt>昵称</dt>
+                    <dd>名字这么长这么长</dt>
+                    <dt>服务器</dt>
+                    <dd>名字这么</dt>
+                </dl>
+                <!-- 未绑定 -->
+                <div class="unbind" v-if="!bindKd">
+                    <p>--------- 未绑定 ---------</p>
+                    <span class="btn btn-yellow" @click="toBindKd">前往绑定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 恭喜获得 -->
+<div class="pop pop-get" :class="{active:pop.get}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <p class="big">恭喜您获得</p>
+        <p class="gift">奖励名称奖励名称</p>
+        <!-- 都没有绑定 -->
+        <p class="tips" v-if="!bindPc&&!bindKd">可绑定英魂之刃与英魂之刃口袋版游戏账号<br>成功绑定后，pc版与口袋版均可领取礼包！</p>
+        <!-- 都绑定 -->
+        <p class="tips" v-if="bindPc&&bindKd">请前往英魂之刃和英魂之刃口袋版<br>游戏内查看哦~</p>
+        <!-- 虚拟奖励-只绑定了PC -->
+        <p class="tips" v-if="!realGift&&bindPc&&!bindKd">请前往英魂之刃游戏内查看 <br>您还可以在英魂之刃口袋版领取1份奖励哦</p>
+        <!-- 虚拟奖励-只绑定口袋 -->
+        <p class="tips" v-if="!bindPc&&bindKd">请前往英魂之刃口袋版游戏内查看<br>您还可以在英魂之刃领取1份奖励哦</p>
+        <!-- 周边奖励-只绑定了PC -->
+        <p class="tips" v-if="realGift&&bindPc&&!bindKd">您还可以在英魂之刃口袋版领取1份虚拟礼包哦</p>
+        <!-- 周边奖励-只绑定口袋 -->
+        <p class="tips" v-if="realGift&&!bindPc&&bindKd">您还可以在英魂之刃领取1份虚拟礼包哦</p>
+
+        <div class="btns">
+            <span class="btn btn-pink" v-if="realGift" @click="showPop('address')">填写收货地址</span>
+            <span class="btn btn-pink" v-if="!realGift" @click="closeGetPop()">确 定</span>
+            <span class="btn btn-yellow" v-if="!bindPc||!bindKd" @click="clickToBind">前去绑定</span>
+        </div>
+    </div>
+</div>
+
+<!-- [废]完成应援 -->
+<div class="pop pop-finish" :class="{active:pop.finish}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <div class="cont">
+            <p class="big">恭喜您完成应援 !</p>
+            <p class="sm">- 请登录游戏帐号领取奖励 -</p>
+        </div>
+        <div class="btns">
+            <span class="btn btn-yellow">登录账号</span>
+        </div>
+    </div>
+</div>
+
+<!-- 活动介绍 -->
+<div class="pop pop-rule" :class="{active:pop.rule}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <p class="title">活动介绍</p>
+        <div class="texts">
+            <dl>
+                <dt>活动时间</dt>
+                <dd>
+                    <p>2021年6月11日15 : 00 ~ 2021年6月30日23 : 59</p>
+                </dd>
+                <dt>活动规则</dt>
+                <dd>
+                    <p>①玩家每次进入H5游戏时，可选择任意一组Couple进行应援，且每人每日只能进行1次应援并且获得1次抽奖奖励。</p>
+                    <p>②每日进入H5，即可获得“五彩糖光棒”应援道具，如果用此初级道具应援，则抽到周边奖励的概率较低。</p>
+                    <p>③玩家每日把活动分享给好友，且好友成功助力应援时，即可获得对应Couple的“应援头像手幅”应援道具，如果用此中级应援道具应援，则抽到周边奖励的概率中等。</p>
+                    <p>④玩家在小程序中成功绑定了自己的账号后，完成1场相应游戏的对局，即可获得1个对应Couple的“定制加油棒”热力助力道具，如果用此高级道具热力助力，则抽到周边奖励的概率较高。</p>
+                </dd>
+            </dl>
+        </div>
+        <div class="btns">
+            <span class="btn btn-yellow" @click="showPop('gift')">查看完整奖励信息</span>
+        </div>
+    </div>
+</div>
+<!-- 奖励介绍 -->
+<div class="pop pop-gift" :class="{active:pop.gift}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <p class="title">完整奖励信息</p>
+        <div class="tabs">
+            <span :class="{active:giftTab==0}" @click="giftTab=0;playBtn()">初级奖励 </span>
+            <span :class="{active:giftTab==1}" @click="giftTab=1;playBtn()">中级奖励 </span>
+            <span :class="{active:giftTab==2}" @click="giftTab=2;playBtn()">高级奖励
+            </span>
+        </div>
+        <div class="tab-conts">
+            <div class="tab-cont" :class="{active:giftTab==0}">
+                <p class="g-name">狐妖联动红线礼包</p>
+                <div class="table ">
+                    <div class="thead">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th colspan="2">英魂之刃</th>
+                              </tr>
+                              <tr>
+                                  <th>奖品名称</th>
+                                  <th>概率</th>
+                              </tr>
+                          </thead>
+                      </table>
+                  </div>
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><b>5万神秘商店积分</b></td>
+                                    <td>28.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>全金币英雄限免（3天）</b></td>
+                                    <td>20.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>精品皮肤兑换卡碎片</b></td>
+                                    <td>30.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>全精品皮肤限免（2天）</b></td>
+                                    <td>10.00%</td>
+                                <tr>
+                                    <td><b>全史诗皮肤限免（1天）</b></td>
+                                    <td>10.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山苏苏&白月初 </b></td>
+                                    <td>1.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山红红&东方月初</b></td>
+                                    <td>1.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>总计</b></td>
+                                    <td>100.00%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="table ">
+                    <div class="thead">
+                        <table>
+                            <thead>
+                                
+                                <tr>
+                                    <th colspan="2">英魂之刃口袋版</th>
+                                </tr>
+                                <tr>
+                                    <th>奖品名称</th>
+                                    <th>概率</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><b>2000积分</b></td>
+                                    <td>14.2%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>饰品礼包</b></td>
+                                    <td>39.40%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>英雄随机礼包</b></td>
+                                    <td>44.40%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山苏苏&白月初</b></td>
+                                    <td>1.00%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山红红&东方月初</b></td>
+                                    <td>1.00%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>总计</b></td>
+                                    <td>100.00%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-cont" :class="{active:giftTab==1}">
+                <p class="g-name">狐妖联动结缘礼包</p>
+               
+                <div class="table ">
+                    <div class="thead">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">英魂之刃</th>
+                                </tr>
+                                <tr>
+                                    <th>奖品名称</th>
+                                    <th>概率</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><b>5万神秘商店积分</b></td>
+                                    <td>16.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>全金币英雄限免（3天）</b></td>
+                                    <td>12.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>精品皮肤兑换卡碎片</b></td>
+                                    <td>12.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>全精品皮肤限免（2天）</b></td>
+                                    <td>12.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>全史诗皮肤限免（1天）</b></td>
+                                    <td>12.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>史诗皮肤兑换卡碎片</b></td>
+                                    <td>12.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>10万神秘商店积分</b></td>
+                                    <td>8.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>战马坐骑碎片</b></td>
+                                    <td>7.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>凤凰坐骑碎片</b></td>
+                                    <td>5.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山苏苏&白月初</b></td>
+                                    <td>2.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>周边-涂山红红&东方月初</b></td>
+                                    <td>2.00%</td>
+                                </tr>
+                                <tr>
+                                    <td><b>总计</b></td>
+                                    <td>100.00%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table ">
+                     <div class="thead">
+                         <table>
+                             <thead>
+                                 <tr>
+                                     <th colspan="2">英魂之刃口袋版</th>
+                                 </tr>
+                                 <tr>
+                                     <th>奖品名称</th>
+                                     <th>概率</th>
+                                 </tr>
+                             </thead>
+                         </table>
+                     </div>
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                                 <tr>
+                                     <td><b>2000积分</b></td>
+                                     <td>10.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>5000积分</b></td>
+                                     <td> 3.40%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>皮肤兑换卡</b></td>
+                                     <td> 1.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>英雄兑换卡 </b></td>
+                                     <td>0.50%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>饰品礼包 </b></td>
+                                     <td>31.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>英雄随机礼包</b></td>
+                                     <td> 31.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>精品皮肤随机礼包 </b></td>
+                                     <td>19.10%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>周边-涂山苏苏&白月初 </b></td>
+                                     <td>2.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>周边-涂山红红&东方月初 </b></td>
+                                     <td>2.00%
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td><b>总计</b></td>
+                                     <td> 100.00%
+                                     </td>
+                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-cont" :class="{active:giftTab==2}">
+                <p class="g-name">狐妖联动转世礼包</p>
+                <div class="table ">
+                    <div class="thead">
+                         <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2">英魂之刃</th>
+                                <tr>
+                                    <th>奖品名称</th>
+                                    <th>概率</th>
+                                </tr>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                   
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                               <tr>
+                                   <td><b>5万神秘商店积分</b></td>
+                                   <td>15.40%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>全金币英雄限免（3天）</b></td>
+                                   <td>10.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>精品皮肤兑换卡碎片</b></td>
+                                   <td>10.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>全精品皮肤限免（2天）</b></td>
+                                   <td>10.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>全史诗皮肤限免（1天）</b></td>
+                                   <td>10.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>史诗皮肤兑换卡碎片</b></td>
+                                   <td>15.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>10万神秘商店积分</b></td>
+                                   <td>9.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>战马坐骑碎片</b></td>
+                                   <td>6.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>凤凰坐骑碎片</b></td>
+                                   <td>6.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>皮肤兑换卡</b></td>
+                                   <td>0.50%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>英雄兑换卡</b></td>
+                                   <td>0.80%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>精品皮肤兑换卡</b></td>
+                                   <td>0.30%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>英雄涂山苏苏</b></td>
+                                   <td>1.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>周边-涂山苏苏&白月初</b></td>
+                                   <td>3.00%
+                               <tr>
+                                   <td><b>周边-涂山红红&东方月初</b></td>
+                                   <td>3.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>总计</b></td>
+                                   <td>100.00%</td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table ">
+                    <div class="thead">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">英魂之刃口袋版</th>
+                                </tr>
+                                <tr>
+                                    <th>奖品名称</th>
+                                    <th>概率</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        </div>
+                    <div class="tbody">
+                        <table>
+                            <tbody>
+                               <tr>
+                                   <td><b>2000积分</b></td>
+                                   <td>9.65%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>5000积分</b></td>
+                                   <td>3.25%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>皮肤兑换卡</b></td>
+                                   <td>1.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>英雄兑换卡</b></td>
+                                   <td>1.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>饰品礼包</b></td>
+                                   <td>25.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>英雄随机礼包</b></td>
+                                   <td>25.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>精品皮肤随机礼包</b></td>
+                                   <td>19.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>史诗皮肤随机礼包</b></td>
+                                   <td>10.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>涂山苏苏（不可交易）</b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>周边-涂山苏苏&白月初</b></td>
+                                   <td>3.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>周边-涂山红红&东方月初</b></td>
+                                   <td>3.00%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>总计</b></td>
+                                   <td>100.00%</td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="sm">英魂之刃口袋版中部分礼包概率 <b @click="showPop('giftkd')">点击查看</b></p>
+ 
+    </div>
+</div>
+<!-- 口袋版概率 -->
+<!--  -->
+<div class="pop pop-gift pop-gift-kd" :class="{active:pop.giftkd}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+       <p class="title">英魂之刃口袋版</p>
+       <div class="tabs">
+           <span :class="{active:kdGiftTab==0}" @click="kdGiftTab=0;playBtn()">饰品<br>礼包 </span>
+           <span :class="{active:kdGiftTab==1}" @click="kdGiftTab=1;playBtn()">英雄随<br>机礼包 </span>
+           <span :class="{active:kdGiftTab==2}" @click="kdGiftTab=2;playBtn()">精品皮肤<br>随机礼包
+           </span>
+           <span :class="{active:kdGiftTab==3}" @click="kdGiftTab=3;playBtn()">史诗皮肤<br>随机礼包
+           </span>
+       </div>
+       <div class="tab-conts">
+           <div class="tab-cont" :class="{active:kdGiftTab==0}">
+               <div class="table ">
+                   <div class="thead">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th colspan="2">饰品礼包</th>
+                               </tr>
+                               <tr>
+                                   <th>奖品名称</th>
+                                   <th>概率</th>
+                               </tr>
+                           </thead>
+                       </table>
+                   </div>
+                   <div class="tbody">
+                       <table>
+                           <tbody>
+                         <tr>
+                             <td><b>皮肤碎片*1 </b></td>
+                             <td>30.00%</td>
+                         </tr>
+                         <tr>
+                             <td><b>皮肤碎片*2 </b></td>
+                             <td>28.50%</td>
+                         </tr>
+                         <tr>
+                             <td><b>新品抽奖券 </b></td>
+                             <td>15.00%</td>
+                         </tr>
+                         <tr>
+                             <td><b>3级宝石随机卡 </b></td>
+                             <td>10.00%</td>
+                         </tr>
+                         <tr>
+                             <td><b>50点券抵用券 </b></td>
+                             <td>10.00%</td>
+                         </tr>
+                         <tr>
+                             <td><b>2级宝石随机卡 </b></td>
+                             <td>5.10%</td>
+                         </tr>
+                         <tr>
+                             <td><b>彩凤天翔 </b></td>
+                             <td>0.70%</td>
+                         </tr>
+                         <tr>
+                             <td><b>幻蛛魔影 </b></td>
+                             <td>0.70%</td>
+                         </tr>
+                         <tr>
+                             <td><b>总计</b></td>
+                             <td> 100.00%</td>
+                         </tr>
+
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+
+           </div>
+           <div class="tab-cont" :class="{active:kdGiftTab==1}">
+               <div class="table ">
+                   <div class="thead">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th colspan="2">英雄随机礼包</th>
+                               </tr>
+                               <tr>
+                                   <th>奖品名称</th>
+                                   <th>概率</th>
+                               </tr>
+                           </thead>
+                       </table>
+
+                   </div>
+                   <div class="tbody">
+                       <table>
+                           <tbody>
+                             <tr>
+                                 <td><b>冥王哈迪斯1天契约卡</b></td>
+                                 <td> 16.55%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>泰坦巨人1天契约卡</b></td>
+                                 <td> 16.55%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>神秘冒险家1天契约卡</b></td>
+                                 <td> 15.65%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>自然之灵1天契约卡</b></td>
+                                 <td> 17.65%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>李探花1天契约卡</b></td>
+                                 <td> 15.65%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>佐罗1天契约卡</b></td>
+                                 <td> 14.95%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>冥王哈迪斯 </b></td>
+                                 <td>0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>泰坦巨人</b></td>
+                                 <td> 0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>神秘冒险家</b></td>
+                                 <td> 0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>自然之灵</b></td>
+                                 <td> 0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>李探花</b></td>
+                                 <td> 0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>佐罗</b></td>
+                                 <td> 0.50%</td>
+                             </tr>
+                             <tr>
+                                 <td><b>总计</b></td>
+                                 <td> 100.00%</td>
+                             </tr>
+
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+              
+           </div>
+           <div class="tab-cont" :class="{active:kdGiftTab==2}">
+               <div class="table ">
+                   <div class="thead">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th colspan="2">精品皮肤随机礼包</th>
+                               </tr>
+                               <tr>
+                                   <th>奖品名称</th>
+                                   <th>概率</th>
+                               </tr>
+                           </thead>
+                       </table>
+                   </div>
+
+                   <div class="tbody">
+                       <table>
+                           <tbody>
+                               <tr>
+                                   <td><b>小乔-碧波荡漾1天契约卡</b></td>
+                                   <td> 19.91%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>圣女贞德-娇爽夏娃1天契约卡</b></td>
+                                   <td>19.91%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>奥丁-酷夏沙滩1天契约卡</b></td>
+                                   <td> 19.91%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>女武神-热夏战舞1天契约卡</b></td>
+                                   <td> 19.91%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>诸葛亮-逐浪卧龙1天契约卡</b></td>
+                                   <td> 19.86%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>小乔-碧波荡漾</b></td>
+                                   <td> 0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>圣女贞德-娇爽夏娃</b></td>
+                                   <td> 0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>奥丁-酷夏沙滩</b></td>
+                                   <td> 0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>女武神-热夏战舞 </b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>诸葛亮-逐浪卧龙 </b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>总计</b></td>
+                                   <td> 100.00%</td>
+                               </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+               
+           </div>
+           <div class="tab-cont" :class="{active:kdGiftTab==3}">
+               <div class="table ">
+                   <div class="thead">
+                       <table>
+                           <thead>
+                               <tr>
+                                   <th colspan="2">史诗皮肤随机礼包</th>
+                               </tr>
+                               <tr>
+                                   <th>奖品名称</th>
+                                   <th>概率</th>
+                               </tr>
+                           </thead>
+                       </table>
+                   </div>
+
+                   <div class="tbody">
+                       <table>
+                           <tbody>
+                               <tr>
+                                   <td><b>关羽—炼狱武神1天契约卡</b></td>
+                                   <td>19.89%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>花木兰—苍刃战姬1天契约卡</b></td>
+                                   <td>19.89%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>李探花—跃动小子1天契约卡</b></td>
+                                   <td>19.89%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>五彩神石—哥斯拉1天契约卡</b></td>
+                                   <td>19.89%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>小龙女—神瑛公主1天契约卡</b></td>
+                                   <td>19.84%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>关羽—炼狱武神</b></td>
+                                   <td>0.20%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>花木兰—苍刃战姬</b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>李探花—跃动小子</b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>五彩神石—哥斯拉</b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>小龙女—神瑛公主</b></td>
+                                   <td>0.10%</td>
+                               </tr>
+                               <tr>
+                                   <td><b>总计</b></td>
+                                   <td> 100.00%</td>
+                               </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+               
+           </div>
+       </div>
+        </div>
+</div>
+<!-- 领奖记录 -->
+<div class="pop pop-record" :class="{active:pop.record}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <p class="title">获奖记录</p>
+        <div class="table">
+            <div class="thead">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>奖品名称</th>
+                            <th>领奖时间</th>
+                            <th>领奖状态</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbody">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><b>狐妖联动转世礼包</b></td>
+                            <td>06-10 11:09</td>
+                            <td><span><b>英魂之刃未获取</b></span><span><b>英魂之刃口袋版未领取</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><b>周边-涂山红红&amp;东方月初</b></td>
+                            <td>06-10 11:07</td>
+                            <td><span><b>请登记地址</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><b>狐妖联动转世礼包</b></td>
+                            <td>06-09 18:51</td>
+                            <td><span><b>均已领取</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><b>狐妖联动红线礼包</b></td>
+                            <td>06-08 11:18</td>
+                            <td><span><b>均已领取</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><b>狐妖联动转世礼包</b></td>
+                            <td>06-07 15:20</td>
+                            <td><span><b>口袋版已领取</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><b>周边-涂山苏苏&amp;白月初</b></td>
+                            <td>06-07 15:20</td>
+                            <td><span><b>请登记地址</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><b>狐妖联动红线礼包</b></td>
+                            <td>06-04 19:30</td>
+                            <td><span><b>均已领取</b></span></td>
+                        </tr>
+                    </tbody>
+                    <!-- <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>领奖状态程序控制</b>
+                            </td>
+                            <td>12-14 23:59</td>
+                            <td>
+                                <span>PC版未领取</span>
+                                <span>
+                                    <b>口袋版已领取</b>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>周边-涂山苏苏&白月初</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span>未领取</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><b>周边-涂山红红&amp;东方月初</b></td>
+                            <td>2021-06-10 11:07</td>
+                            <td><span><b>请登记地址</b></span></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span>未领取</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <b>名字这么长这么长</b>
+                            </td>
+                            <td>2021-12-14 23:59</td>
+                            <td>
+                                <span><b>均已领取</b></span>
+                            </td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+        <div class="version">
+            <div class="game">
+                <p class="name">英魂之刃 </p>
+                <!-- 已绑定 -->
+                <dl class="bind-info" v-if="bindPc">
+                    <dt>昵称</dt>
+                    <dd>名字这么长这么长</dt>
+                    <dt>服务器</dt>
+                    <dd>名字这么</dt>
+                </dl>
+                <!-- 未绑定 -->
+                <div class="unbind" v-if="!bindPc">
+                    <p>--------- 未绑定 ---------</p>
+                    <span class="btn btn-yellow" @click="toBindPc">前往绑定</span>
+                </div>
+            </div>
+            <div class="game">
+                <p class="name">英魂之刃口袋版 </p>
+                <!-- 已绑定 -->
+                <dl class="bind-info" v-if="bindKd">
+                    <dt>昵称</dt>
+                    <dd>名字这么长这么长</dt>
+                    <dt>服务器</dt>
+                    <dd>名字这么</dt>
+                </dl>
+                <!-- 未绑定 -->
+                <div class="unbind" v-if="!bindKd">
+                    <p>--------- 未绑定 ---------</p>
+                    <span class="btn btn-yellow" @click="toBindKd">前往绑定</span>
+                </div>
+            </div>
+        </div>
+        <div class="address">
+            <p class="tips">注：每个玩家均可绑定1个英魂之刃账号与1个英魂之刃口袋版账号，无法解除绑定，绑定成功后系统自动发放奖励。</p>
+            <span class="btn btn-pink" @click="showPop('address')">填写收货地址</span>
+        </div>
+    </div>
+</div>
+<!-- 选择游戏 -->
+<div class="pop pop-chose-game" :class="{active:pop.choseGame}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <p class="sm">请选择你要登录的游戏</p>
+        <div class="chose">
+            <span class="game-pc" @click="toBindPc"></span>
+            <span class="game-kd" @click="toBindKd"></span>
+        </div>
+    </div>
+</div>
+<!-- 绑定角色 -->
+<div class="pop pop-bind" :class="{active:pop.bind}">
+    <div class="pop-main">
+        <p class="title">绑定角色</p>
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <form class="form">
+            <div class="form-item form-item-select">
+                <select name="" id="" class="select">
+                    <option value="1">圣域南国</option>
+                    <option value="2">圣域南国2</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <input type="text" placeholder="请输入您的角色ID" class="ipt">
+            </div>
+            <div class="form-item">
+                <input type="number" name="" id="" placeholder="请输入您的验证码" class="ipt sm">
+                <span class="btn-code" @click="clickGetCode">{{codeTxt}}</span>
+            </div>
+        </form>
+        <div class="btns">
+            <span class="btn btn-pink" v-if="isWmini" @click="weappLogin">小程序角色一键登录</span>
+            <span class="btn btn-yellow" @click="showPop('confirmBindPc',true)">立即绑定</span>
+        </div>
+        <span class="how" @click="clickHowBind">如何查询角色ID</span>
+    </div>
+</div>
+<div class="pop pop-weappLogin pop-weappLogin-1" :class="{active:pop.confirmBindPc}">
+    <div class="pop-main">
+        <p class="title">绑定提示</p>
+        <div class="cont">
+            <p class="sm">只可绑定1个账号，绑定后账号无法更改<br>是否确认绑定</p>
+        </div>
+        <div class="btns">
+            <span class="btn btn-pink" @click="closePop('confirmBindPc')">取 消</span>
+            <span class="btn btn-yellow" @click="clickBind">确 定</span>
+        </div>
+    </div>
+</div>
+<div class="pop pop-weappLogin pop-weappLogin-2" :class="{active:pop.weappLogin}">
+    <div class="pop-main">
+        <p class="title">一键绑定</p>
+        <div class="cont">
+            <p class="sm">您确认要使用小程序的角色<br><span class="big">acccc</span><br>绑定本活动吗</p>
+        </div>
+        <div class="btns">
+            <span class="btn btn-pink" @click="closePop('weappLogin')">取 消</span>
+            <span class="btn btn-yellow" @click="weappLogin">确 定</span>
+        </div>
+    </div>
+</div>
+<!-- 原手机号 -->
+<div class="pop pop-phone" :class="{active:pop.phone}">
+    <div class="pop-main">
+
+        <a class="pop-close " href="javascript:;" @click="closePop()"></a>
+        <div class="head">
+            <img src="" alt="">
+        </div>
+        <p class="big">名字要有七个字</p>
+        <div class="bind-info">
+
+            <dl>
+                <dt>大区</dt>
+                <dd>名一二三</dt>
+            </dl>
+            <dl>
+                <dt>等级</dt>
+                <dd>LV.37</dt>
+            </dl>
+        </div>
+        <div class="btns">
+            <span class="btn btn-pink" @click="playBtn">修改绑定</span>
+            <span class="btn btn-yellow" @click="playBtn">确 定</span>
+        </div>
+    </div>
+</div>
+
+<!-- 收货 -->
+<div class="pop pop-address" :class="{active:pop.address}">
+    <div class="pop-main">
+        <p class="title">收货信息</p>
+        <a class="pop-close " href="javascript:;" @click="closePop('address')"></a>
+        <form class="form">
+            <div class="form-item">
+                <label for="username" class="lbl">姓名</label>
+                <input type="text" name="username" class="ipt" id="username">
+            </div>
+            <div class="form-item">
+                <label for="phone" class="lbl">联系电话</label>
+                <input type="number" placeholder="" class="ipt" name="phone" id="phone">
+            </div>
+            <div class="form-item">
+                <label for="address" class="lbl">收货地址</label>
+                <textarea name="address" id="address" cols="30" rows="10" class="ipt"></textarea>
+            </div>
+        </form>
+        <p class="tips">*请准确填写信息，以免无法收到周边奖励。<br>
+            您也可以在主页中的【领奖记录】中进行填写。</p>
+        <div class="btns">
+            <span class="btn btn-yellow" @click="playBtn">确 认</span>
+        </div>
+    </div>
+</div>
+<div class="pop pop-common" :class="{active:pop.common}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closeCommonPop"></a>
+        <div class="cont">
+            <p class="sm">{{popCommonMsg}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="pop pop-share-tips" :class="{active:pop.shareTips}" @click="closeShareTips">
+</div>
+
+    </div>
+    <script src="js/howler.min.js"></script>
+    
+
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script src="js/vue.2.6.12.js"></script>
+<script src="js/config.js"></script>
+<script src="https://moba.99.com/script/mobamicroapp.js"></script>
+<!-- 分享配置 -->
+<script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
+<script>
+    document.writeln('<script type="text/javascript" src="//mccos.99.com/wxsharev2.html?sys=6&rnd=' + Math
+        .random() +
+        '"><\/script>')
+</script>
+<script src="js/html2canvas.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        var jiathis_config = {
+            summary: "为联动英雄热力助力赢周边大礼！",
+            title: '狐妖小红娘X英魂之刃联动7月2日高甜来袭！',
+            pic: "https://img9.99.com/moba/2021/4/8/11.png"
+        }
+
+        var sharedata = {
+            imgUrl: jiathis_config.pic, //分享的图片
+            title: jiathis_config.title, //分享到朋友圈的标题
+            url: window.location.href, //分享的链接
+            desc: jiathis_config.summary, //发送给好友的描述
+        };
+
+        /* qq */
+        window.setShareInfo && window.setShareInfo({
+            title: sharedata.title, //必填
+            summary: sharedata.desc, //必填
+            pic: sharedata.imgUrl, //必填
+            url: sharedata.url,
+            WXconfig: {
+                swapTitleInWX: true,
+                appId: '',
+                timestamp: '',
+                nonceStr: '',
+                signature: ''
+            }
+        });
+
+        var wmini = false;
+        /* 判断小程序环境 */
+        wx.miniProgram.getEnv(function (res) {
+            console.log('res.miniprogram', res.miniprogram) // true
+            wmini = true
+
+            if (app.broswer.wechat && !wmini) { // 微信H5
+                console.log('wx')
+                try {
+                    /* 微信 */
+                    weixin.initShare(sharedata);
+                } catch (error) {
+                    // console.log(error)
+                }
+            } else if (wmini) {
+                console.log('wmini')
+                // 设置分享
+                mobapost.initShare({
+                    title: '7月2日高甜联动来袭！',
+                    url: sharedata.url,
+                    imageUrl: 'https://img9.99.com/moba/2021/4/8/222.jpg'
+                })
+            }
+
+        })
+    </script>
+
+    <div style="display:none">
+    <script type="text/javascript">
+        Public.tongji();
+        Public.pings();
+    </script>
+</div>
+</body>
+
+</html>

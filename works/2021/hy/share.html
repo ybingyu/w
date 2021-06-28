@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta content="minimal-ui,width=750, user-scalable=no, viewport-fit=cover" name="viewport" id="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no, email=no" />
+<!-- UC默认竖屏 ，UC强制全屏 -->
+<meta name="full-screen" content="yes" />
+<meta name="browsermode" content="application" />
+<!-- QQ强制竖屏 QQ强制全屏 -->
+<meta name="x5-orientation" content="portrait" />
+<meta name="x5-fullscreen" content="true" />
+<meta name="x5-page-mode" content="app" />
+<script src="https://moba.99.com/script/public.js?v2"></script>
+<title>狐妖小红娘X英魂之刃联动H5活动
+</title>
+<meta name="Description"
+    content="《英魂之刃》是一款类DOTA的多人竞技网游，拥有无需下载，即点即玩，10秒开局，qq登录，精美画面，爽快体验等游戏特色和优势。进入游戏后，即可体验充满魔幻风格的游戏世界，领略原创英雄角色和强力技能，在还原三路5V5经典模式的同时，更创新单路决战之谷模式，出门即可10人团战，最快享受激情团战体验！并且还有一端双玩法全新RPG、PVE模式，与玩家一起打造巅峰战场。游戏入驻腾讯QQ游戏大厅后，更是人气飙升，是中国风第一DOTA网游">
+<meta name="Keywords"
+    content="英魂之刃，英魂之刃官方网站，英魂之刃官网，DOTA页游，英魂，英魂之刃下载，微端下载，英魂之刃礼包，新手礼包，新英雄，活跃度，微信，龙骑士，绑定，英魂视频，比赛，周免，英魂之刃攻略，MOBA，即下即玩，无需注册，10秒加载,30秒开局，dota网页版，英雄出装，5v5,10v10，RPG,PVE，兑换码，中国风，魔幻，黄金十二宫，兑换码，天赋，LOL网页版，竞技游戏">
+<link rel="shortcut icon" href="https://img5.99.com/moba/images/index/v2/favicon.ico">
+<meta name="author" content="bindy(128080) | 2021-05-17" />
+<link href="css/style.css" rel="stylesheet" />
+<style id="ratioCss"></style>
+<script>
+    var zoomUA = navigator.userAgent.toLowerCase();
+    var zoomHeight = 0;
+
+    function zoom(width, height) {
+        var ratio; //缩放比例
+        var docEl = document.documentElement;
+        var clientWidth = docEl.clientWidth;
+        if (zoomUA.match(/android/i) || zoomUA.match(/oppo/i)) {
+            zoomHeight = docEl.clientHeight - window.innerHeight;
+        }
+        var clientHeight = docEl.clientHeight - zoomHeight * window.devicePixelRatio;
+        var ratioClient = clientWidth / clientHeight;
+        var ratioObj = width / height;
+        if (ratioObj >= ratioClient) {
+            ratio = clientWidth / width;
+        } else {
+            ratio = clientHeight / height;
+        }
+        var backRatio = 1 //ratio>1?1: 1/ratio;
+        document.getElementById("ratioCss").innerHTML = ".scale{-webkit-transform: translate(-50%,-50%) scale(" +
+            ratio +
+            "); transform: translate(-50%,-50%) scale(" + ratio + ");margin-top:-" + zoomHeight + "px}"
+    }
+
+    function zoomHtml(width) {
+        document.querySelector('meta[name="viewport"]').content = 'minimal-ui,width=' + width +
+            ', user-scalable=0, viewport-fit=cover';
+    }
+    //控制viewport的值，避免ios旋转放大bug
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function () {
+        setTimeout(function () {
+            document.querySelector('meta[name="viewport"]').content = ''
+        }, 200);
+        setTimeout(function () {
+            zoomHtml(750);
+            zoom(750, 1335);
+        }, 310);
+    }, false);
+    //解决关闭/开启屏幕 页面放大bug
+    window.addEventListener("webkitvisibilitychange", function () {
+        zoomHtml(750);
+        zoom(750, 1335);
+    }, false);
+    zoom(750, 1335);
+    window.onpageshow = function (evt) {
+        setTimeout(function () {
+            zoom(750, 1335);
+        }, 300);
+    };
+</script>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script> 
+<script>
+  var vConsole = new VConsole();
+</script>
+</head>
+
+<body>
+    <div id="app" class="app app-share">
+        <!--tip-->
+<div class="tip hide" id="tip">
+    <span>为了更好的体验，请将手机/平板竖起来！</span>
+</div>
+
+        <div class="main">
+            <!-- 分享助力 -->
+            <div class="layer help" :class="{active:sharePage=='help'}">
+                <div class="scale">
+                    <div class="logo">
+    <span class="logo-1"></span>
+    <span class="logo-2"></span>
+    <span class="logo-3">
+        <script>
+            Public.setLogo(true)
+        </script>
+    </span>
+</div>
+                    <a href="/index.html" class="home"></a>
+                    <div class="info">
+                        <div class="head">
+                            <!-- 默认头像 -->
+                            <img src="image/default-head.png" alt="">
+                        </div>
+                        <p class="name">名字要有七个字</p>
+                        <p class="talk">7月2日高甜联动来袭！<br>
+                            快来为喜欢的CP热力助力，赢周边大礼！</p>
+                        <span class="btn btn-yellow" @click="">立即助力</span>
+                        <div class="gift">
+                            <div class="txt txt-1"><span>涂山红红&东方月初</span></div>
+                            <div class="txt txt-2"><span>涂山苏苏&白月初（Q版）</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 若玩家在微信端通过链接进行分享，则好友点击”立即助力“后跳转含有二维码的静态图，引导玩家进入小程序后再开启活动： -->
+            <div class="index share layer " :class="{active:sharePage=='share'}">
+                <div class="scale">
+                    <div class="cont">
+                        <div class="logo">
+    <span class="logo-1"></span>
+    <span class="logo-2"></span>
+    <span class="logo-3">
+        <script>
+            Public.setLogo(true)
+        </script>
+    </span>
+</div>
+                        <div class="slogan"></div>
+                        <p class="time">活动时间：2021年6月15日-2021年7月4日</p>
+                        <img src="https://img8.99.com/moba/images/act/2021/hy/xcx.png" class="code" alt="">
+                        <p class="text">{{!(broswer.wechat || broswer.qq)?'通过微信扫码进入活动':'扫码即可加入活动'}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+             <div class="pop pop-common" :class="{active:pop.common}">
+    <div class="pop-main">
+        <a class="pop-close " href="javascript:;" @click="closeCommonPop"></a>
+        <div class="cont">
+            <p class="sm">{{popCommonMsg}}</p>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    
+
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script src="js/vue.2.6.12.js"></script>
+<script src="js/config.js"></script>
+<script src="https://moba.99.com/script/mobamicroapp.js"></script>
+<!-- 分享配置 -->
+<script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
+<script>
+    document.writeln('<script type="text/javascript" src="//mccos.99.com/wxsharev2.html?sys=6&rnd=' + Math
+        .random() +
+        '"><\/script>')
+</script>
+    <script src="js/share.js"></script>
+
+
+    <div style="display:none">
+    <script type="text/javascript">
+        Public.tongji();
+        Public.pings();
+    </script>
+</div>
+</body>
+
+</html>
