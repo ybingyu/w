@@ -4,7 +4,7 @@
  * @Author: bindy(128080)
  * @Date: 2021-05-18 09:19:52
  * @LastEditors: bindy(128080)
- * @LastEditTime: 2021-06-28 18:03:26
+ * @LastEditTime: 2021-06-29 14:46:39
  */
 var config = {
     // 'video': 'media/',
