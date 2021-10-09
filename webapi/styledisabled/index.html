@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="light.css" id="lightTheme">
+    <link rel="alternate stylesheet" href="dark.css" disabled id="darkTheme">
+</head>
+
+<body>
+<a href="javascript:toggleTheme();">切换</a>
+    <script>
+        function toggleTheme() {
+            let lightTheme = document.querySelector('#lightTheme')
+            let darkTheme = document.querySelector('#darkTheme')
+            if (darkTheme.disabled) {
+                lightTheme.disabled = true;
+                darkTheme.disabled = false;
+            } else {
+                lightTheme.disabled = false;
+                darkTheme.disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
