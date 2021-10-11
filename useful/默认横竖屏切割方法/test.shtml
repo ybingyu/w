@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>幸运一百分 互通日常大抽奖-魔域中文官方网站-my.99.com</title>
+    <meta name="keywords" content="魔域,网络游戏,魔域游戏,魔域官网,网络游戏下载,魔域官方网站,中文魔域,免费游戏,魔域神域争霸,魔域亡灵法师,免费网络游戏,终身免费,魔域幻兽,魔域群殴,魔域PK,魔域幻化,魔域顿悟,魔域飞天斩,魔域飞天连斩,聚宝阁,精灵游侠,弓箭手,箭破天穹,弓之王者">
+<meta name="description" content="魔域2018年全新资料片“箭破天穹”今日燃情公测，带您进入全新职业“精灵游侠”的成长之旅！无需从头练级、抛开繁琐任务，畅快享受养成快感！全新乐器演奏系统、全新PK赛-血焰炼狱、第五赛季跨服竞技场等多重玩法燃情上线，巨额奖励空前集结！《魔域》中文官方网站致力为您提供最新的游戏资讯、最全的游戏攻略、最多的免费福利！">
+<meta name="author" content="candy(930227) | 2018-05-22">
+<link rel="shortcut icon" href="https://img4.99.com/ca/index/myico3.ico">
+<script src="https://my.99.com/script/public.js" charset="gbk"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+	<link href="css/phone.css" rel="stylesheet" media="screen">
+	<style>
+	body{ background:#8cdcf3 }
+	.wrapper{ background: url(https://img9.99.com/mykd/img/2018/06/21/bg.jpg) center 0  no-repeat}
+	</style>
+</head>
+
+<body>
+    <div class="loading" id="loading">
+        <div class="loader">
+            <div class="loader-inner ball-clip-rotate-multiple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <p id="loadingPercent">0%</p>
+    </div>
+    <div class="wrapper" view-mode="h"  view-scale="noborder" view-width="1334" view-height="750" view-align="t" id="phoneIndex">
+        <!-- sidebar -->
+        <div class="sidebar">
+            <a href="javascript:;" title="">登录</a>
+            <a href="javascript:;" title="" style="display: none;">注销</a>
+            <a href="javascript:;" title="">查看获奖明细</a>
+            <a href="javascript:;" title="">规则说明</a>
+            <a href="javascript:;" title="">立即下载互通版</a>
+        </div>
+        <!-- /sidebar -->
+        <h1 class="logo" id="logo">
+            <a href="https://my.99.com/index/" title="魔域中文官方网站">
+                <img src="https://img4.99.com/my/images/logo/logo.png" alt="魔域中文官方网站">
+            </a>
+            <script>setLogo();</script>
+        </h1>
+        <h2>幸运一百分 互通日常大抽奖</h2>
+        <div class="slogan">
+            <span class="slogan-peo"></span>
+            <span class="slogan-dot"></span>
+            <span class="slogan-left"></span>
+            <span class="slogan-right"></span>
+        </div>
+        <!-- 用户信息 -->
+        <div class="user-mod">
+            亲爱的
+            <span class="red">名字七个半字符</span>, 您好，当前抽奖机会
+            <strong class="red">10</strong>次
+        </div>
+        <!-- /用户信息 -->
+        <!-- 摇奖 -->
+        <div class="lottery-mod on" id="lotteryMod">
+            <a class="btn-prize" href="javsscript:;" title="">【查看完整奖品】</a>
+            <a class="btn-lottery" href="javascript:;" title=""></a>
+            <!-- <span class="cursor"></span> -->
+        </div>
+        <!-- /摇奖 -->
+        <!-- 手机弹窗放这里 -->
+        <!-- /手机弹窗放这里 -->
+    </div>
+    <script src="https://my.99.com/script/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/orientlayer-new.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/function.js"></script>
+<!--统计代码-->
+    <div style="display:none">
+        <script>
+            myPublic.addEventTongji();
+        </script>
+    </div>
+</body>
+
+</html>

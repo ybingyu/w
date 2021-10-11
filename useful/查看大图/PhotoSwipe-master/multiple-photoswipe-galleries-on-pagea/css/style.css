@@ -1,0 +1,17 @@
+.my-simple-gallery {
+  width: 100%;
+  float: left;
+}
+.my-simple-gallery img {
+  width: 100%;
+  height: auto;
+}
+.my-simple-gallery figure {
+  display: block;
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 150px;
+}
+.my-simple-gallery figcaption {
+  display: none;
+}

@@ -1,0 +1,8 @@
+.popBox{background:#FFFFFF;border:5px solid #666666;position:absolute;z-index:100;width:300px;display:none;}
+.pbHeader{background:#333333;color:#FFFFFF;font-size:14px;font-weight:bold;height:33px;line-height:33px;overflow:hidden;zoom:1;}
+.pbHeaderTxt{float:left;padding-left:10px;}
+.pbClose{display:block;float:right;background:#333;color:#ffffff;border:1px solid #CCC;font-size:16px;font-weight:bold;width:16px;height:16px;line-height:16px;padding:2px;text-decoration:none;text-align:center; margin:5px 5px auto auto;}
+.pbClose:hover{background:#C00;}
+.pbMain{padding:15px;}
+.pbBtn{text-align:center;padding:5px;}
+.pbBtn input{margin:0 5px;background:#333;border:1px solid #CCC;color:#ffffff;padding:3px 10px;}

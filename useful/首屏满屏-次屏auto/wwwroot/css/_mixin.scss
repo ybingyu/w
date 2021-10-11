@@ -1,0 +1,95 @@
+@mixin ellipsis{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin margin-center-x($width){
+	position: absolute;
+	left: 50%;
+	margin-left: ($width / -2) ;
+}
+@mixin margin-center-y($height){
+	position: absolute;
+	top: 50%;
+	margin-top: ($height / -2) ;
+}
+@mixin margin-center($width,$height){
+	position: absolute;
+	top: 50%;
+	margin: ($height / -2) 0 0 ($width / -2);
+}
+
+@mixin cover{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+@mixin fixedCover{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@mixin animation($str...){
+	-webkit-animation: $str;
+	animation: $str;
+}
+
+@mixin transform($str){
+	-webkit-transform: $str;
+	transform: $str;
+}
+
+@mixin transform-origin($str){
+	-webkit-transform-origin: $str;
+	transform-origin: $str;
+}
+
+@mixin transition($str...){
+	-webkit-transition: $str;
+	transition: $str;
+}
+
+@mixin transition-delay($str){
+	-webkit-transition-delay: $str;
+	transition-delay: $str;
+}
+
+@mixin animation-delay($s...){
+	-webkit-animation-delay: $s;
+	animation-delay: $s;
+}
+@mixin animation-play-state($s){
+	-webkit-animation-play-state: $s;
+	animation-play-state: $s;
+}
+
+@mixin animation-duration($s...){
+	-webkit-animation-duration: $s;
+	animation-duration: $s;
+}
+
+@mixin text-hide{
+	font-size:0;
+	line-height: 0;
+	overflow: hidden;
+	text-indent: -9999px;
+}
+
+@mixin keyframes($name){
+  @-webkit-keyframes #{$name} {@content};
+  @keyframes #{$name} {@content};
+}
+
+ @mixin gpu{
+ 	@include transform(translateZ(0));
+ 	-webkit-backface-visibility: hidden;
+ 	backface-visibility: hidden;
+  	-webkit-perspective: 1000;
+  	perspective: 1000;
+ }

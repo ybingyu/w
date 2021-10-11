@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="css/p.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+ul,li{padding:0;margin:0;}
+li{list-style:none;}
+.rglSlide{height:600px;width:100px;overflow:hidden;}
+.rglSlide li{height:100px;width:100px;}
+.disable{color:#999;}
+/*两行*/
+.rglSlide{width:100px;height:100px;}
+.rglSlide li{float:left;}
+.nownum{font-weight:bold;}
+</style>
+</head>
+<body>
+<!--轮播-->
+<div class="rglSlide" id="rglSlide"><ul>
+<li style="background:url(peop5.jpg) no-repeat center center;"></li>
+<li style="background:url(peop5.jpg) no-repeat center center;"></li>
+<li style="background:url(peop5.jpg) no-repeat center center;"></li>
+<li style="background:url(peop5.jpg) no-repeat center center;"></li>
+<li style="background:url(peop5.jpg) no-repeat center center;"></li>
+</ul></div>
+<div id="rglSlideNum">
+</div>
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="rglSlide.js"></script>
+<script type="text/javascript">
+(function($){
+	var __width=100;//单屏宽度
+	var $rglSlideNum=$("#rglSlideNum");//数字容器
+	var $rglSlide=$("#rglSlide");//滚动对象
+	var __nowNumCssName="nownum";//当前数字序号
+	/*
+	function:	rglSlide
+	depends:    jquery.js(1.2.6~1.4.0)
+				rglSlide.js(rglSlide)
+	*/
+	var __rglslide=$rglSlide.rglSlide({
+		isWinLoad:true,//是否window onload后加载
+		productScrollWitch:"ul",//相对this选择器，产生滚动条的大div
+		list:"ul > li",//相对this选择器，list对象
+		seeColumn:1,//可视范围分列数目
+		step:1,//滚动步长
+		isAutoPlay:{
+			timer:1000,//间隔时间
+			rescrollTime:false,//回滚时间，回滚关闭时自动触发回弹替代回滚，需要连回弹效果清除的请添加reboundState:false
+			orientation:"left"//默认滚动方向，只有上下，top,bottom
+		},//自动播放树配置，false时禁用自动播放功能
+		isBtn:false,//按钮树配置，false时禁用按钮控制功能
+		callback:function($this,i){
+			$rglSlideNum.find("a").removeClass(__nowNumCssName);
+			$rglSlideNum.find("a").eq(i/__width).addClass(__nowNumCssName);
+		  }
+	});
+	$rglSlide.find("li").each(function(i){
+		$rglSlideNum.append('<a href="#">'+(i+1)+'</a>&nbsp;&nbsp;');
+		$rglSlideNum.hover(__rglslide.autoStop,__rglslide.autoPlay);
+		var timeid;
+		$rglSlideNum.find("a").hover(function(){
+			var i=parseInt($(this).html())-1;
+			__rglslide.gotoscroll(i*__width);
+			timeid=setTimeout(function(){
+				if($rglSlide.scrollLeft()!=i*__width){
+					__rglslide.gotoscroll(i*__width);
+				}
+			},500);
+		},function(){
+			clearTimeout(timeid);
+		});
+	});
+})(jQuery);
+</script>
+<!--/轮播-->
+<br />
+请保持3层嵌套结构<br />
+div外层结构提供可整除可视行数的固定高度，并保证标签处于overflow:hidden;状态<br />
+ul尽量保持标签样式干净如无必要尽量不加样式修饰
+</body>
+</html>

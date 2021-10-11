@@ -1,0 +1,148 @@
+body {
+  background: #190b28;
+}
+
+//card
+
+$r : 4;
+$s : 1s;// 一圈的速度
+$ingS : 0.7s;// 速度最快时的一圈的速度
+$beginR : 4;
+$endR : 4;
+.card{
+  position: relative;
+  width: 316px;
+  height: 447px;
+  margin: 0 auto;
+  span{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 316px;
+    height: 447px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    font-size: 80px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .font{
+    background: url(../image/jf.png);
+  }
+  .back{
+    background: url(../image/sp.png);
+    @include transform(rotateY(180deg));
+  }
+}
+
+// 加速
+.card.begin{
+  .font {
+    @include animation(rotateY-begin-font $s * $beginR ease-in forwards);
+  }
+  .back{
+    @include animation(rotateY-begin-back $s * $beginR ease-in forwards);
+  }
+}
+// 匀速
+.card.ing{
+  .font {
+    @include animation(rotateY-font $ingS linear infinite );
+  }
+  .back{
+    @include animation(rotateY-back $ingS linear infinite );
+  }
+}
+// 减速 停在正面
+.card.end-font{
+  .font {
+    @include animation(rotateY-end-font-1 $s * $endR ease-out forwards);
+  }
+  .back{
+    @include animation(rotateY-end-back-1 $s * $endR ease-out forwards);
+  }
+}
+// 减速 停在背面
+.card.end-back{
+  .font {
+    @include animation(rotateY-end-font-2 ($s * $endR + 0.5s) ease-out forwards);
+  }
+  .back{
+    @include animation(rotateY-end-back-2 ($s * $endR + 0.5s) ease-out forwards);
+  }
+}
+
+// 开始动画
+@include keyframes(rotateY-begin-font){
+  0%{
+    @include transform(rotateY(0deg));
+  }
+  100%{
+    @include transform(rotateY(180deg * 2 * $beginR));
+  }
+}
+@include keyframes(rotateY-begin-back){
+  100%{
+    @include transform(rotateY(180deg * 2 * ($beginR + 0.5)));
+  }
+}
+
+// end停在正面
+@include keyframes(rotateY-end-font-1){
+  0%{
+    @include transform(rotateY(0deg));
+  }
+  100%{
+    @include transform(rotateY(180deg * 2 * $endR));
+  }
+}
+@include keyframes(rotateY-end-back-1){
+  100%{
+    @include transform(rotateY(180deg * 2 * ($endR + 0.5)));
+  }
+}
+// end停在背面
+@include keyframes(rotateY-end-font-2){
+  0%{
+    @include transform(rotateY(0deg));
+  }
+  100%{
+    @include transform(rotateY(180deg * 2 * ($endR + 0.5)));
+  }
+}
+@include keyframes(rotateY-end-back-2){
+  100%{
+    @include transform(rotateY(180deg * 2 * ($endR + 1)));
+  }
+}
+
+// ing动画
+@include keyframes(rotateY-font){
+  0%{
+    @include transform(rotateY(0deg));
+  }
+  100%{
+    @include transform(rotateY(180deg * 2 ));
+  }
+}
+@include keyframes(rotateY-back){
+  100%{
+    @include transform(rotateY(180deg * 2 * 1.5));
+  }
+}
+
+
+
+.btn{
+  font-size: 30px;
+  display: block;
+  color: #fff;
+  background: #c0c0c0;
+  width: 300px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  margin: 50px auto;
+}

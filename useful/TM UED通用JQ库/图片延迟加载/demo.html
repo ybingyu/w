@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery 图片延迟加载</title>
+</head>
+
+<body>
+<img srcData="1.jpg" width="640" height="399" /> <br />
+<img srcData="2.jpg" width="640" height="399" /> <br />
+<img srcData="3.jpg" width="640" height="399" /> <br />
+<img srcData="4.jpg" width="640" height="399" /> <br />
+<img srcData="1.jpg" width="640" height="399" /> <br />
+<img srcData="2.jpg" width="640" height="399" /> <br />
+<img srcData="3.jpg" width="640" height="399" /> <br />
+<img srcData="4.jpg" width="640" height="399" /> <br />
+<img srcData="1.jpg" width="640" height="399" /> <br />
+<img srcData="2.jpg" width="640" height="399" /> <br />
+<img srcData="3.jpg" width="640" height="399" /> <br />
+<img srcData="4.jpg" width="640" height="399" /> <br />
+
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="jquery.imagesLazyLoad.js"></script>
+<script type="text/javascript">
+jQuery(function($){
+	$("img").imageLazyload({
+		srcData:"srcData", //图片源标签属性名
+		diff:200, // 图片离当前屏幕多少像素开始加载
+		fadeIn:true, //是否淡入效果
+		fadeInSpeed:"slow", //淡入效果速度
+		spaceHoder: "spaceball.gif" //占位图片
+	});
+})
+</script>
+</body>
+</html>

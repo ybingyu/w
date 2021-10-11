@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+li{ width:50px; height:50px; background:#000; margin:10px; float:left;}
+
+/*tip窗口*/
+.tip{max-width:120px;width:e?xpression_r_r_r(document.body.clientWidth > 120? "120px": "auto" ); border:2px solid #fff;padding:8px;background: #37040d;color:#f4af5f; margin:-50px 0 0 5px;opacity:0.9;filter:alpha(opacity=90); -moz-opacity:0.9; -khtml-opacity: 0.9;}
+
+</style>
+</head>
+
+<body>
+<script type="text/javascript"> 
+  var tip={$:function(ele){ 
+  if(typeof(ele)=="object") 
+    return ele; 
+  else if(typeof(ele)=="string"||typeof(ele)=="number") 
+    return document.getElementById(ele.toString()); 
+    return null; 
+  }, 
+  mousePos:function(e){ 
+    var x,y; 
+    var e = e||window.event; 
+    return{x:e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft, 
+y:e.clientY+document.body.scrollTop+document.documentElement.scrollTop}; 
+  }, 
+  start:function(obj){ 
+    var self = this; 
+    var t = self.$("mjs:tip"); 
+    obj.onmousemove=function(e){ 
+      var mouse = self.mousePos(e);   
+      t.style.left = mouse.x + 10 + 'px'; 
+      t.style.top = mouse.y + 10 + 'px'; 
+      t.innerHTML = obj.getAttribute("tips"); 
+      t.style.display = ''; 
+    }; 
+    obj.onmouseout=function(){ 
+      t.style.display = 'none'; 
+    }; 
+  } 
+  } 
+</script>
+<ul>
+	<li onmouseover="tip.start(this)" tips="400积分兑换"> </li>
+	<li onmouseover="tip.start(this)" tips="400积分兑换"> </li>
+	<li onmouseover="tip.start(this)" tips="400积分兑换"> </li>
+	<li onmouseover="tip.start(this)" tips="400积分兑换"> </li>
+</ul>
+<div id="mjs:tip" class="tip" style="position:absolute;left:0;top:0;display:none;"></div> 
+</body>
+</html>

@@ -1,0 +1,52 @@
+body {
+  background: #190b28;
+}
+
+.wrapper {
+  width: 1002px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.main-swiper,.swiper-wrapper,.swiper-slide{
+  height: 100%;
+}
+
+.slide-cover{
+  background: #c0c0c0;
+}
+
+.slide-content{
+  background: #190b28;
+}
+.content{
+  overflow: auto;
+  height: 100%;
+}
+.section{
+  height: 1000px;
+  font-size: 30px;
+  color: #fff;
+}
+
+#inner{
+  height: 100%;
+  width: 100%;
+  /*background-size: 100%;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;*/
+  .swiper-wrapper {
+    height: auto;
+  }
+  .swiper-slide {
+    height: auto;
+  }
+}
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS变量实现scale缩放切割方式</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    
+    :root{
+        /*750为psd宽度，根据实际需求调整*/   
+        --width: 750;
+        --ratio:calc(var(--wWidth) / var(--width));
+        --navHeight:50;
+        --navItem:3
+    }
+    html,body{height:100%;overflow: hidden; -webkit-transform: translate3d(0,0,0)}
+    body {font: 28px "Lucida Grande", Helvetica, Arial, Verdana, "Microsoft YaHei", sans-serif; color:#5f300d; line-height: 1.5;}
+
+.fixed{position: fixed;left: 0;top: 0; width: 100%; z-index: 10;}
+.nav{width: calc(var(--width) * 1px); height: calc(var(--navHeight) * 1px);-webkit-transform: scale( var(--ratio) ); -webkit-transform-origin: 0 0}
+.nav a{float: left; width: calc(var(--width) / var(--navItem) * 1px); height: calc(var(--navHeight) * 1px);line-height: calc(var(--navHeight) * 1px); text-align: center; background:#5f300d; color: #fff}
+.nav a.on{ color: aquamarine}
+.main{width: calc(var(--width) * 1px); position: absolute;left: 0; right: 0; bottom: 0; top:calc( var(--ratio) * var(--navHeight)  * 1px) ;-webkit-transform: scale( var(--ratio) ); -webkit-transform-origin: 0 0; height: calc(var(--wHeight) / var(--ratio) * 1px  - var(--ratio) * var(--navHeight) * 1px); 
+/*控制是否一屏内隐藏*/
+overflow: scroll;
+}
+.mod{ font-size: 40px;position: relative; 
+/*一屏之内添加100%样式*/
+/*height: 100%!important;*/ 
+}
+.mod1{height: 800px; background:url(https://img9.99.com/mykd/images/version/v8/zttj4.jpg) no-repeat; background-size:100% 100%}
+.mod2{height: 1000px; background:url(https://img6.99.com/mykd/2018/10/22/okmain.jpg) no-repeat; background-size:100% 100%}
+.mod3{height: 700px; background:url(https://img9.99.com/mykd/images/version/v8/zttj1.jpg) no-repeat; background-size:100% 100%}
+    </style>
+<script>
+var setScale = function(){
+    var dcStyle = document.documentElement.style;
+    var wW = window.innerWidth;
+    var wH = window.innerHeight;
+    dcStyle.setProperty("--wWidth",wW);
+    dcStyle.setProperty("--wHeight",wH);
+}
+setScale();
+window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize",function(){
+    setTimeout(function(){
+        setScale();
+    },300);
+},false);
+</script>
+</head>
+<body>
+<div class="fixed">
+    <div class="nav"><a href="javascript:;" data-mod=1 class="on">模块1</a><a href="javascript:;"data-mod=2>模块2</a><a href="javascript:;" data-mod=3>模块3</a></div>
+</div>
+<div class="main" id="main">
+    <div class="mod mod1">1</div>
+    <div class="mod mod2">2</div>
+    <div class="mod mod3">3</div>
+</div>
+
+<script src="http://mykd.99.com/script/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+var vPos = [];
+var oNav =  $(".nav a");
+var oMain = $(".main");
+var scrTimer;
+$(".mod").each(function(i) {
+    vPos[i] = $(this)[0].offsetTop;  
+});
+window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize",function(){
+    setTimeout(function(){
+        $(".mod").each(function(i) {
+            vPos[i] = $(this)[0].offsetTop;  
+        });
+        oMain.scrollTop(
+            vPos[$(".nav a.on").attr("data-mod")-1]
+        );
+        },310);
+});
+var setClass = function(){
+    clearTimeout(scrTimer);
+    scrTimer = setTimeout(function(){
+        var vScrollTop = oMain.scrollTop();
+        for(var i = 0; i< vPos.length; i++){
+            if(vScrollTop>=vPos[i] &&  vScrollTop < oMain[0].scrollHeight - oMain[0].clientHeight){
+                oNav.eq(i).addClass("on").siblings().removeClass("on")    
+            }
+            if(vScrollTop >= oMain[0].scrollHeight - oMain[0].clientHeight){
+                oNav.eq(vPos.length-1).addClass("on").siblings().removeClass("on")   
+            }
+        }
+    },50);
+}
+oMain.on("scroll",setClass);
+oNav.on("click",function(){
+    oMain.off("scroll");  
+    var ind = $(this).index(); 
+    oMain.animate({scrollTop:vPos[ind]+"px"},300,function(){
+        oNav.eq(ind).addClass("on").siblings().removeClass("on")    
+        oMain.on("scroll",setClass);
+    })  
+})  
+</script>
+</body>
+</html>

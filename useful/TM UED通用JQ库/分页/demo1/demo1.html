@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+a,a:hover{text-decoration:none;}
+.num{color:#06C;margin:5px;}
+.on{color:#F00;}
+.off{color:#666;}
+</style>
+</head>
+<body>
+<!--数据源-->
+<ul id="pageContentData" style="display:none;">
+    <div>list1</div>
+    <div>list2</div>
+    <div>list3</div>
+    <div>list4</div>
+    <div>list5</div>
+    <div>list6</div>
+
+</ul>
+<!--/数据源-->
+<!--数据显示区-->
+<ul id="pageContent">
+
+</ul>
+<!--/数据显示区-->
+<!--分页显示区-->
+<div class="page">
+    <a href="#" id="btnFirstPage" class="off">首页</a>
+    <a href="#" id="btnPrePage" class="off">上一页</a>
+    <span id="boxNumPage">
+    <a href="#" class="num on">1</a>
+    <a href="#" class="num">2</a>
+    <a href="#" class="num">3</a>
+    <a href="#" class="num">4</a>
+    <a href="#" class="num">5</a>
+<!--    <a href="#" class="num">6</a>
+    <a href="#" class="num">7</a>
+    <a href="#" class="num">8</a>
+    <a href="#" class="num">9</a>
+    <a href="#" class="num">10</a>-->
+    </span>
+    <a href="#" id="btnNextPage" class="">下一页</a>
+    <a href="#" id="btnLastPage" class="">尾页</a>
+</div>
+<!--/分页显示区-->
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="page.js"></script>
+<script type="text/javascript">
+/*
+function:	page
+depends:    jquery-1.4.pack.js
+			ue.jq-page.js
+*/
+$("#pageContentData > div").uePage({
+	pageSize:3,
+	pageIndex:1,
+	pageContentBox:"#pageContent",
+	cssBtnOn:"on",
+	cssBtnOff:"off",
+	btnFirstPage:"#btnFirstPage",
+	btnPrePage:"#btnPrePage",
+	btnNextPage:"#btnNextPage",
+	btnLastPage:"#btnLastPage",
+	boxNumPage:"#boxNumPage",
+	layerNumPage:"a",
+	cssNumPage:"num"
+});
+</script>
+</body>
+</html>

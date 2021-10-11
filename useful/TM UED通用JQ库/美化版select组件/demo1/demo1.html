@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, big, em, font, img, strong, tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td { padding:0; margin:0; font-size: 12px; }
+table { border-collapse:collapse; border-spacing:0; }
+td { font-size: 12px; line-height: 160%;}
+fieldset, img { border:0; }
+ol, ul { list-style:none; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; }
+a {color:#FFD100;text-decoration:none;}
+a:hover { text-decoration: underline;}
+body{height:800px; background:#000; padding:50px; color:#fff}
+
+.selectbtn{position:relative;border:1px solid #AAAAAA;background:url(select.gif) no-repeat right center;cursor:pointer;color:#CEBC7E;height:20px;line-height:20px;text-align:left;text-align:left;text-indent:5px;display:inline-block;*display:inline;*zoom:1;vertical-align:middle;}
+.selectbox{position:absolute;background:#333333;border:1px solid #936031;left:-1px;top:20px;}
+.selectbox li{cursor:pointer;text-align:left;text-indent:5px;height:19px;line-height:19px;color:#8E867B;}
+.selectbox li.optionselected{background:#336699;color:#ffffff;}
+.selectstate{border:1px solid #ffffff;z-index:999;}
+.selectstate ul{background:#444444;border:1px solid #ffffff; border-top:none;}
+.selectstate2{border:1px solid #ffffff;z-index:999;}
+.selectstate2 ul{background:#444444;border:1px solid #ffffff; border-bottom:none;}
+
+</style>
+</head>
+<body>
+xxxxx
+<select name="">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="我倒">666666666666</option>
+</select>
+xxxxx
+<select name="">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="666666666666">666666666666</option>
+</select>
+<input type="text" style="vertical-align:middle" />
+<img src="select.gif" style="vertical-align:middle" />
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="fmselect.js"></script>
+<script type="text/javascript">
+/*
+function:	美化版select
+depends:    jquery.js(1.2.6~1.4.0)
+			fmselect.js(fmSelect)
+*/
+$("select").fmSelect({
+	template:
+		'<div class="selectbtn" {selectbtn="true"}>'+
+			'<span {selecttextbox="true"}>{selectText}</span>'+
+			'<ul class="selectbox" {optionbox="true"} style="display:none;">{option}</ul>'+
+		'</div>',//结构模板，大括号为模板标记
+	optionWrap:'<li {option="true"} class="{optionSelectedCssName}">{text}</li>',//option循环包裹环境，支持多层包裹，大括号为模板标记
+	selectStateIdName:"selectstate",//打开状态下selectbtn的id名称，只需保证不冲突即可
+	selectStateCssName:"selectstate",//打开状态下selectbtn样式名，只需保证不冲突即可
+	optionSelectedCssName:"optionselected",//选中样式，样式作用在{optionSelectedCssName}
+	selBoxWidAdd:0,//宽度增幅，即程序自动计算select宽度后加上该值作为新对象的宽度
+	optBoxWidAdd:0//宽度增幅，即程序自动计算select宽度后加上该值作为新对象的宽
+});
+</script>
+</body>
+</html>

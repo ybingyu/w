@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+ul,li{padding:0; margin:0; list-style:none;}
+/*公共*/
+.menu .fMenu{position:relative;position:static;}
+.menu .fMenu ul{position:absolute;display:none;}
+.menu .fMenu ul li{position:relative;position:static;}
+.menu .fMenu ul{top:0;left:0;}/*一级菜单left值和top值*/
+.menu .fMenu ul ul{top:0;left:0;}/*固定宽度时使用（一级以上菜单left值和top值设定在此设置）*/
+
+/*--德强修补术--*/
+/*该修补术可解决跳空问题，使用了该补丁，您就可以关闭js的跳空修补术（mBugIeLayerNextMarginTop）啦，对性能是有好处的*/
+.menu ul:after{content:"";height:0;visibility:hidden;display:block;clear:both;}
+.menu ul{zoom:1;}
+.menu ul li{float:left;}
+/*--/德强修补术--*/
+
+/*菜单*/
+.menu .fMenu ul{top:0;left:100px;}/*一级菜单left值和top值*/
+.menu .fMenu ul ul{top:0;left:100px;}/*固定宽度时使用（一级以上菜单left值和top值设定在此设置）*/
+
+/*导航*/
+.menu li.fMenu,.menu a.fMenu{display:block;width:100px;height:25px;line-height:25px;color:#FFFFFF;background:#000000;}
+.menu a.fMenu{padding:0 10px;width:80px;}
+.menu li.fMenu{border-bottom:solid 5px #F00;}
+
+/*菜单*/
+.menu .fMenu li{width:100px;width:auto;}/*自动宽度*/
+.menu .fMenu li,.menu .fMenu li a{display:block;height:25px;line-height:25px;background:#036;color:#FFF;white-space:nowrap;}
+.menu .fMenu li a{padding:0 10px;}
+.menu .fMenu ul{border:solid 3px #009999;}
+
+/*hover*/
+.menu ul a.isSub{background:#0CF;}/*下级标识*/
+.menu ul a.on,.menu ul a:hover{background:#063;}/*选中状态*/
+
+
+.menu_2 .fMenu ul{top:25px;left:0;}/*一级菜单left值和top值*/
+.menu_2 .fMenu ul ul{top:0;left:100px;}/*固定宽度时使用（一级以上菜单left值和top值设定在此设置*/
+
+
+.menu_3 .fMenu ul{top:25px;left:0;}/*一级菜单left值和top值*/
+.menu_3 .fMenu ul ul{top:0;left:100px; width:auto;}/*固定宽度时使用（一级以上菜单left值和top值设定在此设置*/
+
+
+</style>
+</head>
+<body>
+<ul class="menu" id="menuAllBox" style="width: 100px;">
+    <li><a href="#">菜单一</a>
+        <ul>
+            <li class="isSub fMenu">
+                <a class="fMenu isSub" href="#">menu1</a>
+                <ul>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu11</a>
+                        <ul>
+                            <li><a href="#">menu111</a></li>
+                            <li><a href="#">menu112</a></li>
+                            <li><a href="#">menu113</a></li>
+                            <li><a href="#">menu114</a></li>
+                            <li><a href="#">menu115</a></li>
+                            <li><a href="#">menu116</a></li>
+                            <li><a href="#">menu117</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu12</a></li>
+                    <li><a href="#">menu13</a></li>
+                    <li><a href="#">menu14</a></li>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu15</a>
+                        <ul>
+                            <li><a href="#">menu151</a></li>
+                            <li><a href="#">menu152</a></li>
+                            <li><a href="#">menu153</a></li>
+                            <li><a href="#">menu154</a></li>
+                            <li><a href="#">menu155</a></li>
+                            <li><a href="#">menu156</a></li>
+                            <li><a href="#">menu157</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu16</a></li>
+                    <li><a href="#">menu17</a></li>
+                </ul>
+            </li>
+            <li class="fMenu"><a class="fMenu" href="#">menu2</a></li>
+            <li class="fMenu"><a class="fMenu" href="#">menu3</a></li>
+        </ul>
+    </li>
+</ul>
+
+<ul class="menu menu_2">
+    <li><a href="#">菜单二</a>
+        <ul>
+            <li class="isSub fMenu">
+                <a class="fMenu isSub" href="#">menu1</a>
+                <ul>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu11</a>
+                        <ul>
+                            <li><a href="#">menu111</a></li>
+                            <li><a href="#">menu112</a></li>
+                            <li><a href="#">menu113</a></li>
+                            <li><a href="#">menu114</a></li>
+                            <li><a href="#">menu115</a></li>
+                            <li><a href="#">menu116</a></li>
+                            <li><a href="#">menu117</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu12</a></li>
+                    <li><a href="#">menu13</a></li>
+                    <li><a href="#">menu14</a></li>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu15</a>
+                        <ul>
+                            <li><a href="#">menu151</a></li>
+                            <li><a href="#">menu152</a></li>
+                            <li><a href="#">menu153</a></li>
+                            <li><a href="#">menu154</a></li>
+                            <li><a href="#">menu155</a></li>
+                            <li><a href="#">menu156</a></li>
+                            <li><a href="#">menu157</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu16</a></li>
+                    <li><a href="#">menu17</a></li>
+                </ul>
+            </li>
+            <li class="fMenu"><a class="fMenu" href="#">menu2</a></li>
+            <li class="fMenu"><a class="fMenu" href="#">menu3</a></li>
+        </ul>
+    </li>
+</ul>
+
+<ul class="menu menu_3">
+    <li><a href="#">菜单三</a>
+        <ul>
+            <li class="isSub fMenu">
+                <a class="fMenu isSub" href="#">menu1</a>
+                <ul>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu11</a>
+                        <ul>
+                            <li><a href="#">menu111</a></li>
+                            <li><a href="#">menu112</a></li>
+                            <li><a href="#">menu113</a></li>
+                            <li><a href="#">menu114</a></li>
+                            <li><a href="#">menu115</a></li>
+                            <li><a href="#">menu116</a></li>
+                            <li><a href="#">menu117</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu12</a></li>
+                    <li><a href="#">menu13</a></li>
+                    <li><a href="#">menu14</a></li>
+                    <li class="isSub">
+                        <a class="isSub" href="#">menu15</a>
+                        <ul>
+                            <li><a href="#">menu151</a></li>
+                            <li><a href="#">menu152</a></li>
+                            <li><a href="#">menu153</a></li>
+                            <li><a href="#">menu154</a></li>
+                            <li><a href="#">menu155</a></li>
+                            <li><a href="#">menu156</a></li>
+                            <li><a href="#">menu157</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">menu16</a></li>
+                    <li><a href="#">menu17</a></li>
+                </ul>
+            </li>
+            <li class="fMenu"><a class="fMenu" href="#">menu2</a></li>
+            <li class="fMenu"><a class="fMenu" href="#">menu3</a></li>
+        </ul>
+    </li>
+</ul>
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/*
+function:	menu
+depends:    jquery-1.4.pack.js
+			ue.jq-menu.js
+*/
+$(".menu").UE_menu({
+    mUlAutoWidth:true,//菜单ul是否自动设定宽度，此设置针对二级上菜单
+    mUlAutoWidthLeftOver:-10,//菜单（普通模式路径：ul）左偏移
+    mUlLiAOnCss:"on",//二级以上菜单当前菜单状态保持的css，该css同时作用在（普通模式路径：ul > li和ul > li >a） 上面
+    mFirstSelector:" > li > ul >li",//第一级选择器，链接selector组合选择器
+    mParent:"li",//this find选择器，事件增加对象
+    mSub:"ul",//this children选择器，将要展开的ul子集
+    mBugIdLayerWidth:function($ul,w){
+        if($ul.children("li").css("width")=="auto"){
+            $ul.children("li").width(w);
+        }
+        if($ul.children("li").children("a").css("width")=="auto"){
+            $ul.children("li").children("a").width(w-20);
+        }
+    },//mBugIdLayerWidth:false,
+      //ie 6,7下存在的（普通模式路径：li）宽度无法自适应大小的bug补充。
+      //如果你的ie6也出现这样的情况请开启该功能，该功能的开启有一定的性能损失，关闭功能请直接赋值false
+    mBugFirstIeLayerNextMarginTop:false,//mBugIeLayerNextMarginTop:-3
+                                        //与下面相同，适用首项bug。
+    mBugIeLayerNextMarginTop:false//mBugIeLayerNextMarginTop:-3
+                                  //ie 7下存在的有子集情况元素底部跳空bug，根据布局不同可能出现的像素差也不一样，
+								  //请手工设置该值，将next元素margin top设置一个负值即可。
+                                  //该功能的开启有一定的性能损失，关闭该功能直接把值设置为false即可。
+});
+</script>
+</body>
+</html>
