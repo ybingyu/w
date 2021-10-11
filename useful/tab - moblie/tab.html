@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+ul{list-style: none;}
+.clearfix:after { content: ""; height: 0; visibility: hidden; display: block; clear: both; }
+.clearfix { zoom: 1; }
+    .tab_tit li{float: left;}
+    .tab_tit a{display: block;background-color: #e4e4e4; padding: 0.6rem 1.4rem;border:1px solid #d5d5d5;  font-size: 1.6rem; text-align: center;color: #6f6f6f;}
+    .tab_tit .on a{background: #fff; border-color: #000; color: #000}
+    .tab_cont{width: 100%;}
+    .tab_main{ margin:10px 0;overflow: hidden;height: 500px;}
+    .tab_main li{float: left;width: 500px;border: 1px solid #999;height: 500px;}
+</style>
+</head>
+<body>
+    <div class="box">
+        <ul class="tab_tit clearfix" id="tabTit">
+            <li class="on"><a href="javascript:;" title="">世界BOSS</a></li>
+            <li><a href="javascript:;" title="">远古BOSS</a></li>
+        </ul>
+        <div id="tabMain" class="tab_cont">
+            <ul class="tab_main clearfix">
+                <li class="tab_li">
+                    tab1
+                </li>
+                <li class="tab_li">
+                    tab2
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="tab.js"></script>
+<script>
+    var tab = new Tab();
+    tab.init({
+        tabMainSel : "#tabMain .tab_main"
+    })
+</script>
+</html>

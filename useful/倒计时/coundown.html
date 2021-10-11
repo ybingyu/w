@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>倒计时</title>
+<style>
+	.count-down{font-family: "Microsoft Yahei"}
+	.time{margin: 0 10px; overflow: hidden; position: relative; display: inline-block; width: 55px;height: 74px; border: 1px solid #000;box-shadow: inset 0 0 1px #fff,0 0 10px #000; border-radius: 5px;text-align: center; vertical-align: text-bottom;line-height: 74px;font-size: 50px;color:#f22e1f;text-shadow: 1px 1px 5px #000; 
+	background: #f2c497;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2c497), color-stop(50%,#e7966c), color-stop(100%,#f2c497));
+	background: -webkit-linear-gradient(top,  #f2c497 0%,#e7966c 50%,#f2c497 100%);
+	background: -ms-linear-gradient(top,  #f2c497 0%,#e7966c 50%,#f2c497 100%);
+	background: linear-gradient(to bottom,  #f2c497 0%,#e7966c 50%,#f2c497 100%);
+	}
+	.time:after{content: ""; position: absolute; top: 50%;left: 0; width: 100%;height: 2px;background: #000;box-shadow: 0 0 10px #000;}
+
+	.animate.time:before{content: "";position: absolute; left: -2px; top: -1px; width: 100%;height: 50%; border: 1px solid #000;border-bottom: none; border-radius: 5px 5px 0 0;-webkit-transform-origin:left bottom;transform-origin:left bottom; -webkit-animation: time 1s ease forwards; animation: time 1s ease forwards;overflow: hidden;
+	background: #f2c497;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2c497), color-stop(50%,#e7966c), color-stop(100%,#f2c497));
+	background: -webkit-linear-gradient(top,  #f2c497 0%,#e7966c 50%,#f2c497 100%);
+	background: -ms-linear-gradient(top,  #f2c497 0%,#e7966c 50%,#f2c497 100%);
+	background: linear-gradient(to bottom,  #f2c497 0%,#e7966c 50%,#f2c497 100%);}
+	.time i{position: relative;font-style: normal;}
+	.count-down b{position: relative; top: -5px; line-height: 74px;font-size: 50px;vertical-align: top;}
+
+	@-webkit-keyframes time{
+		from{}
+		to{ -webkit-transform: rotateX(180deg); }
+	}
+</style>
+</head>
+<body>
+<div class="count-down" id="countDown">
+    <span class="time"><i>1</i></span>
+    <span class="time"><i>1</i></span>
+    <b>:</b>
+    <span class="time"><i>1</i></span>
+    <span class="time"><i>1</i></span>
+    <b>:</b>
+    <span class="time"><i>1</i></span>
+    <span class="time animate"><i>2</i></span>
+    <div class="time"><i>1</i></div>
+</div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+	function CountDown(h,m,s){
+		this.init(h,m,s);
+	}
+	CountDown.prototype = {
+		init : function(h,m,s){
+			this.arrTime = new Array();
+			this.initTimeArray(h);
+			this.initTimeArray(m);
+			this.initTimeArray(s);
+
+			this.initTime();
+
+			setTimeout(this.setTime,1000);
+		},
+		initTimeArray : function (num){
+			this.arrTime.push(parseInt( num / 10 ),parseInt( num % 10 ));
+		},
+		initTime : function(){
+			var html = '';
+			html += this.setTimeHtml(0);
+			html += '<b>:</b>';
+			html += this.setTimeHtml(2);
+			html += '<b>:</b>';
+			html += this.setTimeHtml(4);
+
+			var eleCountDown = document.getElementById('countDown');
+			eleCountDown.innerHTML = html;
+
+			this.eleTime = eleCountDown.getElementsByTagName('span');
+		},
+		setTimeHtml : function(startIndex){
+			var html = '';
+			html += '<span class="time"><i>' + this.arrTime[startIndex] + '</i></span><span class="time"><i>' + this.arrTime[startIndex+1] +'</i></span>';
+			return html;
+		},
+		setTime : function(){
+			if(this.arrTime[5] >= 0){
+				this.arrTime[5] = 9;
+			}else{
+				this.arrTime[5] --;
+			}
+			this.eleTime[5].
+
+			this.setTime();
+		}
+	}
+	// var cd = new CountDown(10,5,30);
+
+</script>
+</html>

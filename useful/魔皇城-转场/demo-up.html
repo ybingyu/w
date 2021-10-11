@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>mask-image 实现溶解特效</title>
+    <style>
+    *{ margin: 0; padding: 0;}
+    .banner{width: 100%;height: 800px; background: url(https://img9.99.com/yhkd/image/v4/header.jpg) center 0 no-repeat}
+    .box{width: 1920px;height: 1216px; background: url(https://img8.99.com/mykd/img/2017/04/05/hf/full-bg-v57.jpg) no-repeat; position:absolute;left: 50%;top: 0; margin-left: -960px}
+    .box{-webkit-mask-image:url(mask-up.png); -webkit-mask-size:4000% 100%;-webkit-mask-position:0 center}
+    .box{animation: startMask1 .8s steps(39) both infinite;}
+    @keyframes startMask1 {
+    to {
+        -webkit-mask-position: 100% center;
+        mask-position: 100% center
+    }
+}
+    </style>
+</head>
+<body>
+  <div class="banner"></div>
+  <div class="box"></div>
+</body>
+</html>

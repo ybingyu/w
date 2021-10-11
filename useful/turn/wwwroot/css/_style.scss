@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+  overflow: hidden;
+}
+
+#flipbook{
+  width: 1728px;
+  height: 515px;
+  margin: 0 auto 40px;
+color: #000;
+transform: scale(0.8) perspective(1000px) rotateX(20deg);
+transform-origin: center bottom;
+font-size: 20px;
+}
+ .b-page-0 .b-wrap {
+  background: #fdd
+}
+.b-page-1 .b-wrap {
+  background: chocolate;
+}
+.b-page-2 .b-wrap {
+  background: rebeccapurple;
+}
+.b-page-3 .b-wrap {
+  background: darkcyan;
+}
+.b-page-4 .b-wrap {
+  background: wheat;
+}
+.b-page-5 .b-wrap {
+
+  background: url(https://hd.99.com/wjzd/extend/view/image/img-1.jpg) no-repeat center;
+  background-size: cover;
+}
+.b-page-6 .b-wrap {
+
+  background: url(https://hd.99.com/wjzd/extend/view/image/img-2.jpg) no-repeat center;
+  background-size: cover;
+}
+.b-page-7 .b-wrap {
+
+  background: url(https://hd.99.com/wjzd/extend/view/image/img-3.jpg) no-repeat center;
+  background-size: cover;
+}
+.b-page-8 .b-wrap {
+
+  background: url(https://hd.99.com/wjzd/extend/view/image/img-4.jpg) no-repeat center;
+  background-size: cover;
+} 

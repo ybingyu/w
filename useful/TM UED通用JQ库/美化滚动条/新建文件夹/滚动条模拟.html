@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>拖拖看看更舒服</title>
+<style type="text/css">
+td{width:200px; height:200px; text-align:center; background:#C93}
+.barPadding{width:15px;height:496px;position:absolute;right:-19px;top:0;padding:2px;background:#000;display:none;}
+.barBox{width:15px;height:496px;position:absolute;left:2px;top:2px;overflow:hidden;}
+.barThumb{width:15px;height:100px;position:absolute;left:0;top:0;background:#fff;}
+.barThumbMouseOver{background:#F60;}
+.barThumbMouseDown{background:#FF0;}
+</style>
+</head>
+<body>
+<div id="contentScrollBox" style="position:relative;width:500px;height:500px;margin:100px auto auto 400px;">
+	<div style="position:relative;width:500px;height:500px;overflow:hidden;background:#CCC;">
+		<div con="true" style="background:#CC9; position:absolute;">
+			<div>
+			<table width="100%" border="5" cellspacing="5" cellpadding="5">
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+				<tr>
+					<td><img src="images/10.jpg" /></td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+	<div class="barPadding" barPadding="true">
+		<div class="barBox" barBox="true">
+			<div class="barThumb" barThumb="true"></div>
+		</div>
+	</div>
+</div>
+<a href="#" id="gotoBottom">gotoBottom</a>
+ | 
+<a href="#" id="gotoTop">gotoTop</a>
+ | 
+<a href="#" id="goto100">goto 100px</a>
+ | 
+<a href="#" id="leapBottom">leapBottom 400px</a>
+ | 
+<a href="#" id="leapTop">leapTop 400px</a>
+ | 
+<a href="#" id="refurCon1">refurCon1</a>
+ | 
+<a href="#" id="refurCon2">refurCon2</a>
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="contentScroll_pg.js"></script>
+<script type="text/javascript">
+var conScroll=tmdBase.contentScroll("#contentScrollBox","[con]","[barPadding]","[barBox]","[barThumb]","barThumbMouseOver","barThumbMouseDown");
+$("#gotoTop").click(function(){conScroll.gotoTop();return false;});
+$("#gotoBottom").click(function(){conScroll.gotoBottom();return false;});
+$("#goto100").click(function(){conScroll.gotoScroll(100);return false;});
+$("#leapBottom").click(function(){conScroll.leapScroll(400);return false;});
+$("#leapTop").click(function(){conScroll.leapScroll(-400);return false;});
+$("#refurCon1").click(function(){
+	conScroll.con.html('loading...');
+	conScroll.refurCon();
+	setTimeout(function(){
+		conScroll.con.html('<table width="100%" border="5" cellspacing="5" cellpadding="5"><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr></table>');
+		conScroll.refurCon();
+	},500);
+	return false;
+});
+$("#refurCon2").click(function(){
+	conScroll.con.html('loading...');
+	conScroll.refurCon();
+	setTimeout(function(){
+		conScroll.con.html('<table width="100%" border="5" cellspacing="5" cellpadding="5"><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr><tr><td><img src="images/10.jpg" /></td></tr></table>');
+		conScroll.refurCon();
+	},500);
+	return false;
+});
+</script>

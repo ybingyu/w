@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, big, em, font, img, strong, tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td { padding:0; margin:0; font-size: 12px; }
+table { border-collapse:collapse; border-spacing:0; }
+td { font-size: 12px; line-height: 160%;}
+fieldset, img { border:0; }
+ol, ul { list-style:none; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; }
+a {color:#FFD100;text-decoration:none;}
+a:hover { text-decoration: underline;}
+body{height:800px; padding:50px;}
+
+
+</style>
+</head>
+<body>
+<span><input name="check" type="checkbox" value="1" /><a href="#" onclick="$(this).prev().click();">test1</a></span>
+<span><input name="check" type="checkbox" value="2" /><a href="#" onclick="$(this).prev().click();">test2</a></span>
+<script type="text/javascript" src="../js/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="fmcheck.js"></script>
+<script type="text/javascript">
+/*
+function:	美化版check
+depends:    jquery.js(1.2.6~1.4.0)
+			fmcheck.js(fmCheck)
+*/
+$("input").fmCheck({
+	checkImg:"checkCheck.gif",//check状态下的图片地址
+	unCheckImg:"checkUnCheck.gif"//uncheck状态下的图片地址
+});
+</script>
+</body>
+</html>

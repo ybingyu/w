@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS变量实现scale缩放切割方式</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    
+    :root{
+        /*750为psd宽度，根据实际需求调整*/   
+        --width: 750;
+        --ratio:calc(var(--wWidth) / var(--width));
+    }
+    html,body{height:100%;overflow: hidden; -webkit-transform: translate3d(0,0,0)}
+    body {font: 28px "Lucida Grande", Helvetica, Arial, Verdana, "Microsoft YaHei", sans-serif; color:#5f300d; line-height: 1.5; }
+    
+    .box{width: calc(var(--width) * 1px);height: calc(var(--wHeight) /var(--ratio) * 1px); position: absolute;left: 0; right: 0; bottom: 0; top:0;-webkit-transform: scale( var(--ratio) ); transform-origin: 0 0;  overflow: scroll;} 
+    .header,.footer{height: 50px; background: coral}
+    .header{height: 330px;}
+    .main{width: 100%; height: 800px; background: burlywood}
+    .txt{ height: 600px; background: darkcyan;}
+    /*弹窗样式*/
+    #popBox{width: 100%;height: 100%;position: fixed;left: 0;top: 0; background: rgba(0,0,0,0.5);}
+    .pop{-webkit-transform:translate(-50%,-50%) scale( var(--ratio) );position: absolute; left: 50%; top: 50%;  }
+    .pop-b{width: 600px; height: 800px; background: #fff}
+    /*以下样式可实现弹窗是延展布局*/
+    /* .pop-b{width: calc(var(--width) * 1px);height: calc(var(--wHeight) / var(--ratio)  * 1px);}
+    .pop-txt{position: absolute;left: 10px; right: 10px;top: 10px;bottom: 10px; background: #fff} */
+    .pop-s{width: 300px;height: 400px; background: sandybrown}
+
+    /*视频播放*/
+    #btnVideo{display: block;width: 63px;height: 63px;margin: 0 auto; background: url(https://img4.99.com/mykd/img/2015/10/29/icon-play.png) no-repeat;}
+    #videoLayer{position: fixed; left: 0; top: 0; background: rgba(0,0,0,0.7); width: 100%; height: 100%; z-index: 100000;display: none;}
+    #video{position: fixed; left: 0; top: 50%; width: 100%; -webkit-transform:translate(0,-50%);z-index: 100000;}
+    
+    /*画布绘制，需设置width,height属性*/
+    #myCanvas{width: 100%;height: 300px; background: olive}
+    </style>
+<script>
+var setScale = function(){
+    var dcStyle = document.documentElement.style;
+    var wW = window.innerWidth;
+    var wH = window.innerHeight;
+    dcStyle.setProperty("--wWidth",wW);
+    dcStyle.setProperty("--wHeight",wH);
+}
+setScale();
+window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize",function(){
+    setTimeout(function(){setScale();},250);
+},false);
+</script>
+</head>
+<body>
+<div class="box">
+    <div class="header">
+        <a href="javascript:;" id="btnVideo"></a> 
+        <p>测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本</p>
+        <img src="https://zydown.99.com/gw/mykd/icon/ewm.jpg">
+    </div>
+    <div class="main">
+        <canvas id="myCanvas" width="750" height="300"></canvas>
+    </div>
+    <div class="txt"></div>
+</div>    
+<div id="popBox">
+    <div class="pop pop-b">
+        <div class="pop-txt"></div>
+    </div>
+    <div class="pop pop-s"></div>
+</div>
+<!--视频层-->
+<div id="videoLayer"></div>
+<div id="video"></div>
+<script src="https://mykd.99.com/script/plugin/zepto.min.js?v=1"></script> 
+<script>
+var canvas = document.getElementById("myCanvas");
+if(canvas.getContext){  
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "https://zydown.99.com/gw/mykd/icon/logo-bg.png";
+    img.onload = function(){
+    ctx.drawImage(img, 10, 10);             
+    };
+}
+$("#btnVideo").on("click",function(){
+      $("#video").html('<video width="100%" src="https://zydown.99.com/gw/mykd/2018/181019-02.mp4" controls autoplay></video>');
+      $("#videoLayer").show(); 
+      $("#video video")[0].play(); 
+      $("#video video").attr("muted",false);
+});
+$("#videoLayer").on("click",function(){
+      $("#video").html('');
+      $(this).hide();  
+});
+$("#popBox").on("click",function(){
+    $(this).hide();
+});
+</script>
+</body>
+</html>

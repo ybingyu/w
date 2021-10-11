@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>tank</title>
+<link href="" rel="stylesheet">
+</head>
+<body onkeydown="getCommand()">
+    <canvas id="tankMap" width="400px" height="300px;" style="background-color:black"></canvas>
+</body>
+<script>
+    function Tank(x,y,direct){
+        this.x = x;
+        this.y = y;
+        this.speed = 1;
+        this.direct = direct;
+
+        var _this = this;
+
+        //上移
+        this.moveUp = function(){
+            _this.y -= _this.speed;
+            _this.direct = 0;
+        }
+        //右移 
+        this.moveRight = function(){
+            _this.x += _this.speed;
+            _this.direct = 1;
+        }
+        this.moveDown = function(){
+            _this.y += _this.speed;
+            _this.direct = 2;
+        }
+        this.moveLeft = function(){
+            _this.x -= _this.speed;
+            _this.direct = 3;
+        }
+    }
+
+    var canvas1 = document.getElementById("tankMap");
+    var cxt = canvas1.getContext("2d");
+
+    var tank = new Tank( 40 ,40 ,0 );
+    drawTank(tank);
+
+    function drawTank(tank){
+        switch(tank.direct){
+            case 0:
+            case 2:
+                //设置颜色  
+                cxt.fillStyle="#BA9658";  
+                //左边的矩形  
+                cxt.fillRect(tank.x,tank.y,5,30);  
+                //右边的矩形  
+                cxt.fillRect(tank.x+17,tank.y,5,30);  
+                //画中间的矩形  
+                cxt.fillRect(tank.x+6,tank.y+5,10,20);  
+                //画出坦克的盖子  
+                cxt.fillStyle="#FEF26E";  
+                cxt.arc(tank.x+11,tank.y+15,5,0,Math.PI * 2,true);  
+                cxt.fill();  
+                //画出炮筒  
+                cxt.strokeStyle="#FEF26E";  
+                cxt.lineWidth=1.5;  
+                cxt.beginPath();  
+                cxt.moveTo(tank.x+11,tank.y+15);  
+                if(tank.direct==0){         //只是炮筒的方向不同  
+                    cxt.lineTo(tank.x+11,tank.y);  
+                }else{  
+                    cxt.lineTo(tank.x+11,tank.y+30);  
+                }  
+                cxt.closePath();  
+                cxt.stroke();  
+                break;  
+            case 1:  
+            case 3:  
+                //设置颜色  
+                cxt.fillStyle="#BA9658";  
+                //上边的矩形  
+                cxt.fillRect(tank.x-4,tank.y+4,30,5);  
+                //下边的矩形  
+                cxt.fillRect(tank.x-4,tank.y+17+4,30,5);  
+                //画中间的矩形  
+                cxt.fillRect(tank.x+5-4,tank.y+6+4,20,10);  
+                //画出坦克的盖子  
+                cxt.fillStyle="#FEF26E";  
+                cxt.arc(tank.x+15-4,tank.y+11+4,5,0,Math.PI * 2,true);  
+                cxt.fill();  
+                //画出炮筒  
+                cxt.strokeStyle="#FEF26E";  
+                cxt.lineWidth=1.5;  
+                cxt.beginPath();  
+                cxt.moveTo(tank.x+15-4,tank.y+11+4);  
+                if(tank.direct==1){         //只是炮筒的方向不同  
+                    cxt.lineTo(tank.x+30-4,tank.y+11+4);  
+                }else{  
+                    cxt.lineTo(tank.x-4,tank.y+11+4);  
+                }  
+                cxt.closePath();  
+                cxt.stroke();  
+                break;    
+        }        
+    }
+    //接收用户按键的函数  
+    function getCommand(){  
+        var code = event.keyCode;  //键盘上字幕的ASCII码  
+        switch(code){  
+            case 87:  
+                tank.moveUp();  
+                break;  
+            case 68:  
+                tank.moveRight();  
+                break;  
+            case 83:  
+                tank.moveDown();  
+                break;  
+            case 65:  
+                tank.moveLeft();  
+                break;  
+        }  
+        //把画布清理  
+        cxt.clearRect(0,0,400,300);  
+        //重新绘制  
+        drawTank(tank);  
+    } 
+</script>
+</html>

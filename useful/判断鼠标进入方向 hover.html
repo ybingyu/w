@@ -1,0 +1,62 @@
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="UTF-8"> 
+<title>判断鼠标进入方向</title> 
+<style type="text/css">
+*{ margin:0; padding:0; list-style:none}
+body{ background:#000}
+img{ border:0}
+ul{ padding:20px}
+ul li{ float:left; margin:10px; width:245px; height:183px; overflow:hidden; position:relative}
+ul span{ width:245px; height:183px; background:#FF0; background:rgba(255,255,0,0.5); position:absolute; left:-100%; top:0; text-align:center; line-height:183px}
+</style>
+</head> 
+<body> 
+<ul id="list">
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+    <li><img src="http://img2.91.com/uploads/allimg/150507/703-15050G50G30-L.jpg"><span>图片介绍</span></li>
+</ul>
+
+<script type="text/javascript" src="http://mykd.99.com/script/jquery-1.11.0.min.js"></script> 
+<script> 
+$("#list li").on("mouseenter mouseleave",function(e){
+	var $this = $(this);
+	var itemSp = $this.find("span"); 
+	var w = $this.width(); 
+	var h = $this.height(); 
+	var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1); 
+	var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1); 
+	//0-3分别对应上右下左四个方向
+	var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; 
+	var directionCss  =[
+		{"left":0,"top":"-100%"},//上
+		{"left":"100%","top":0},//右
+		{"left":0,"top":"100%"},//下
+		{"left":"-100%","top":0}//左
+	]
+	var eventType = e.type; 
+	if(e.type == 'mouseenter'){ 
+	    itemSp.css(directionCss[direction]).stop(true,true).animate({"left":0,"top":0},300)
+	}else{ 
+	    itemSp.stop(true,true).animate(directionCss[direction],300)
+	} 
+})
+</script> 
+</body> 
+</html> 

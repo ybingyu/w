@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+<title>js倒计时代码，支持多个倒计时显示</title>
+</head>
+<body>
+<ul>
+  <li class="timer">
+    <span class="hour">24</span>
+    <span class="minute">0</span>
+    <span class="second">0</span>
+  </li>
+  <li class="timer">
+    <span class="hour">22</span>
+    <span class="minute">10</span>
+    <span class="second">10</span>
+  </li>
+</ul>
+<script type="text/javascript" charset="utf-8" src="js/zepto.min.js"></script>
+<script>
+  $(function(){
+    //add count down timer
+    function addTimer($hour, $minute, $second){
+      var list = [],
+          interval,
+          time = parseInt($hour.text()) * 60 * 60 + parseInt($minute.text()) * 60 + parseInt($second.text());
+
+      if (!interval){
+        interval = setInterval(go, 1000);
+        list.push({
+          hourEle : $hour,
+          minuteEle : $minute,
+          secondEle : $second,
+          time: time
+        });
+      }
+
+      function go() {
+        for (var i = 0; i < list.length; i++) {
+          var $result = getTimerString(list[i].time ? list[i].time -= 1 : 0);
+          list[i].hourEle.text($result.hour);
+          list[i].minuteEle.text($result.minute);
+          list[i].secondEle.text($result.second);
+          if (!list[i].time){
+            list.splice(i--, 1);
+          }
+        }
+      }
+
+      function getTimerString(time) {
+        h = Math.floor((time % 86400) / 3600),
+        m = Math.floor(((time % 86400) % 3600) / 60),
+        s = Math.floor(((time % 86400) % 3600) % 60);
+        if (time>0){
+          return {
+            hour : h,
+            minute : m,
+            second : s
+          }
+        }
+      }
+    }
+
+    //timer init
+    function timerInit(){
+      var $mytimer = $('.timer');
+      for(var i = 0; i < $mytimer.length; i++){
+        var $hour = $mytimer.eq(i).find('.hour'),
+            $minute = $mytimer.eq(i).find('.minute'),
+            $second = $mytimer.eq(i).find('.second');
+
+        addTimer($hour, $minute, $second);
+      }
+    }
+
+    timerInit();
+
+  });
+</script>
+</body>
+</html>

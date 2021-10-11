@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>background-attachment实现最基础的视差滚动</title>
+<style>
+*{padding: 0;margin: 0;}
+    .wrapper{}
+    .section{
+        position: relative;
+        width: 100%;
+        height: 800px;
+        background-repeat: no-repeat;
+        /*fixed: 随着页面的滚动轴背景图片不会移动*/
+        background-attachment: fixed;
+        background-size: cover;
+        overflow: hidden;
+    }
+    .s1{
+        background-image: url(1.jpg);
+    }
+    .s2{
+        background-image: url(2.jpg);
+    }
+    .s3{
+        background-image: url(3.jpg);
+    }
+    .s4{
+        background-image: url(4.jpg);
+    }
+    .s5{
+        background-image: url(5.jpg);
+    }
+
+    .title{
+        position: absolute;
+        top: -100px;
+        left: 100px;
+        color: #3e3e3e;
+        font:700 50px "Microsoft YaHei";
+    }
+
+    .content{
+        position: absolute;
+        top: 200px;
+        right: -100%;
+        width: 700px;
+        color: #3e3e3e;
+        font: 40px "Microsoft YaHei";
+        text-indent: 2em;
+    }
+
+    .animate .title{
+        top: 200px;
+        -webkit-transition : all 1s;
+        -moz-transition : all 1s;
+        -ms-transition : all 1s;
+        transition : all 1s;
+    }
+    .animate .content{
+        right: 100px;
+        -webkit-transition : all 1s;
+        -moz-transition : all 1s;
+        -ms-transition : all 1s;
+        transition : all 1s;
+    }
+
+</style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="section s1">
+        <p class="title">title</p>
+        <p class="content">content content content content content content content content contentcontent content content content content content content content contentcontent content content content content content content content content</p>
+    </div>
+    <div class="section s2">
+        <p class="title">title2</p>
+        <p class="content">content content content content content content content content contentcontent content content content content content content content contentcontent content content content content content content content content</p>
+    </div>
+    <div class="section s3">
+        <p class="title">title3</p>
+        <p class="content">content content content content content content content content contentcontent content content content content content content content contentcontent content content content content content content content content</p>
+    </div>
+    <div class="section s4">
+        <p class="title">title4</p>
+        <p class="content">content content content content content content content content contentcontent content content content content content content content contentcontent content content content content content content content content</p>
+    </div>
+    <div class="section s5">
+        <p class="title">title5</p>
+        <p class="content">content content content content content content content content contentcontent content content content content content content content contentcontent content content content content content content content content</p>
+    </div>
+</div>
+<script src="../jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+    // 页面加载完成后 为第一个元素添加动画
+    $(".section").eq(0).addClass("animate");
+})
+
+    var articleHeight = $(".section").height();
+    $(window).scroll(scrollHandler);
+
+// 滚动监听事件
+    function scrollHandler(e){
+        e.preventDefault();
+
+        var oSections = $(".section");
+        var top = $(document).scrollTop();
+        var i = -1;
+
+        // 查找在视野中的section的index
+        oSections.each(function(){
+            var m = $(this);
+            if(top > m.offset().top - 200){
+                i = $(this).index();
+            }else{
+                return false;
+            }
+        })
+        // 为滚动到视野中的元素加动画
+        var oCurr = $(".animate");
+        if (i && oCurr.index() != i) {
+           oCurr.removeClass("animate");
+           oSections.eq(i).addClass("animate");
+        }
+    }
+</script>
+
+</body>
+</html>

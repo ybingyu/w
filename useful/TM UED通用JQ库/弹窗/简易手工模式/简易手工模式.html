@@ -1,0 +1,44 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+<body>
+<a href="#" id="popBoxLink1">弹窗</a>
+<div style="padding:100px 200px 1000px 200px;height:500px;width:500px;"></div>
+<!--弹窗内容-->
+<div id="popBox1" class="popBox">
+	<div header="true" class="pbHeader"><div hrederTxt="true" class="pbHeaderTxt">弹窗标题</div><a close="true" class="pbClose" href="#">×</a></div>
+	<div main="true" class="pbMain"> 这里为弹窗内容 </div>
+	<div btn="true" class="pbBtn"><input type="button" ok="true" value="确定" /><input close="true" type="button" value="取消" /></div>
+</div>
+<!--/弹窗内容-->
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+<link href="popbox.css" rel="stylesheet" type="text/css" /></head>
+<script type="text/javascript" src="popbox_pg.js"></script>
+<script type="text/javascript">
+/*
+function:	弹窗功能
+depends:    popbox_pg.js
+*/
+(function(){
+	//弹窗对象创建
+	var popbox1=$('#popBox1').popBox({
+		drag:{
+			handle:"[header]"
+		}
+	});popbox1.execute();
+	//弹窗触发点
+	$("#popBoxLink1").click(function(e){popbox1.pbOpen();return false;});
+	//确定按钮
+	popbox1.self.find("[ok]").click(function(e){
+		alert("您点击了ok");
+		popbox1.pbClose();
+		return false;
+	});
+})();
+</script>
+</body>
+</html>

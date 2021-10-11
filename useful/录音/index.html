@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>录音</title>
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <input type="file" accept="video/*;capture=camcorder"> 
+    <input type="file" accept="audio/*;capture=microphone">
+    <device type="media" onchange="update(this.data)"></device> 
+    <video autoplay></video> 
+    <script> 
+    function update(stream) { 
+    document.querySelector('video').src = stream.url; 
+    } 
+    </script>  
+</body>
+</html>

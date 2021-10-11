@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+body{padding:0;margin:0;}
+.tipBox{display:none;background-color:#ff9;border:1px solid #ccc;line-height:1.8;padding:5px 10px; width:500px; height:200px;}
+</style>
+
+</head>
+<body>
+<div id="tipListBox">
+    <div tipList="true" style="border:#666 solid 1px;background:#efefef;height:798px;">
+        <a href="#">==================================================请注意==================================================</a>
+        <div tipCon="tipCon" style="display:none;">
+            请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意<br />
+            请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意请注意意请注意<br />
+            请注意请注意请注意请注意请注意请注请注意请注意请注意请注意请注意请注意请注意请注意请
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="tip.js"></script>
+<script>
+/*
+function:	alert
+depends:    jquery.js(1.2.6~1.4.0)
+			tipUnFade.js(tipUnFade)
+*/
+$("#tipListBox > [tipList]").cTip({
+	tipBoxIdName:"tipBox",//tipbox的id名
+	tipBoxCssName:"tipBox",//tipbox的css名
+	tipConAttr:"[tipCon]",//内容查找
+	tipXAdd:15,//x轴偏移量
+	tipYAdd:20,//y轴偏移量
+	limit:{
+		tag:"body",//限制对象
+		isResizeUpdate:false,
+		padL:0,//向内填充
+		padR:25,//向内填充
+		padB:0,//向内填充
+		padT:0,//向内填充
+		overLeftAdd:20,//越界反向方后偏移量
+		overRightAdd:-30,//越界反向方后偏移量
+		overTopAdd:20,//越界反向方后偏移量
+		overBottomAdd:-20//越界反向方后偏移量
+	}
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>_「英魂之刃口袋版」官方网站_最新5V5公平竞技手游</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="Description" content="欢迎来到英魂之刃，与过亿热血玩家一起，加入到这款最公平的多人在线竞技手游中来！游戏保留了高低地、迷雾、传送、装备主动技能等MOBA经典设定。5v5对战尽享畅快竞技，让你成为下一个王者；乱斗模式带来更多MOBA乐趣；全新冒险模式，给你不一样的荣耀体验；每一种玩法都能带来脑力与手速碰撞以及组队决战PK的无穷乐趣。">
+  <meta name="Keywords" content="英魂之刃，英魂之刃官方网站，英魂之刃官网，英魂之刃口袋，英魂之刃口袋版，英魂之刃手游，英魂之刃手机版，DOTA手游，英魂，英魂之刃口袋版下载，英魂之刃体验服，英魂之刃礼包，英魂之刃口袋版攻略，自由之战2，王者荣耀，光影对决，无尽争霸，龙骑士，英魂赛事，周免，英魂之刃攻略，英魂之刃手游攻略，MOBA，即开即打，dota手游，英雄出装，5v5,10v10，RPG,PVE，兑换码，礼包码，中国风，魔幻，黄金十二宫，兑换码，天赋宝石，LOL手游，竞技游戏，LOL手机版，李小龙的一字马正版授权">
+  <meta name="author" content="Bindy.Yuan(128080) | 2018-03-14">
+  <link rel="shortcut icon" href="https://img6.99.com/yhkd/image/v3/favicon.ico">
+
+  <script src="https://news.99.com/script/g_topmenu.js" charset="GBK"></script>
+  <script src="https://yhkd.99.com/script/public.js"></script>
+
+  <link href="css/style.css" rel="stylesheet">
+  <script>
+    var HANDLE_LINK = '/m/act/2018/spring/ver/';
+  </script>
+  <script>
+    function handleRouter() {
+      var ua = getUA();
+      var link = HANDLE_LINK || '/m';
+      if (ua.mobile) {
+        window.location.href = link;
+      }
+    }
+    handleRouter();
+  </script>
+
+</head>
+
+<body>
+  <div class="full-bg">
+    <div class="wrapper">
+      <h1 class="logo">
+        <script>
+          setLogo();
+        </script>
+      </h1>
+
+      <div class="footer">
+        <script>
+          publicBottom(site.yhkd, 900, "_blank");
+        </script>
+      </div>
+    </div>
+  </div>
+  <script src="https://yhkd.99.com/script/plugin/jquery/jquery-1.8.3.min.js"></script>
+
+  <!--统计代码-->
+  <div style="display:none">
+    <script>
+      tongji();
+    </script>
+  </div>
+</body>
+
+</html>

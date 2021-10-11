@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>svg简易demo</title>
+	<style>
+    *{margin: 0;padding: 0;}    
+	body{ background: #fff;width: 750px;height: 2623px; background: url(bg.jpg) no-repeat; margin: 0 auto;}
+	</style>
+</head>
+<body>
+<svg width="750" height="2623" xmlns="http://www.w3.org/2000/svg" id="svg">
+    <g>
+        <path id="svgpath" d="m174.333227,26.666655c0,0 -42.666681,93.333364 10.66667,120.000039c53.333351,26.666675 356.000116,196.000064 356.000116,196.000064c0,0 124.00004,88.000029 118.666705,132.000043c-5.333335,44.000014 -5.333335,65.333355 -32.00001,82.666694c-26.666675,17.333339 -473.333487,241.333412 -473.333487,241.333412c0,0 -74.666691,64.000021 -26.666675,108.000035c48.000016,44.000014 480.000156,260.000085 479.000323,258.66678c0.999833,1.333305 40.999846,14.666642 35.666511,65.333325c-5.333335,50.666683 -16.000005,97.333365 -61.333353,110.666703c-45.333348,13.333338 -444.000145,228.000074 -444.000145,228.000074c0,0 -68.000022,84.000027 44.000014,149.333382c112.000036,65.333355 416.000135,253.333416 416.000135,253.333416c0,0 70.66669,33.333344 45.333348,73.333357c-25.333342,40.000013 -486.666825,362.666785 -486.666825,362.666785c0,0 -73.333357,37.333345 2.666668,82.666694c76.000025,45.333348 158.666718,109.333369 168.000055,108.000035"
+            opacity="0.5" stroke-width="1.5" stroke="#000" fill="none" />
+        <image x="-35" y="-35" xlink:href="https://zydown.99.com/gw/mykd/icon/logo-bg.png" width="70" height="70" stroke-width="1.5" stroke="#000">
+            <animateMotion begin="0s" dur="10s" repeatCount="indefinite" rotate="auto">
+                <mpath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svgpath" />
+            </animateMotion>
+        </image>
+        <image x="-170" y="-240" xlink:href="people.png" width="240" height="240" stroke-width="1.5" stroke="#000">
+            <animateMotion begin="0s" dur="10s" repeatCount="indefinite">
+                <mpath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svgpath" />
+            </animateMotion>
+        </image>
+    </g>
+</svg>
+<a href="javascript:;" id="btnAni">动画</a> | <a href="javascript:;" id="btnStop">停止</a>
+<script>
+var path = [
+   "", 
+];    
+var oSVG = document.querySelector("#svg");
+document.querySelector("#btnStop").onclick = function (e) {
+    oSVG.pauseAnimations();
+}
+document.querySelector("#btnAni").onclick = function (e) {
+    oSVG.unpauseAnimations();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<html>
+<head>
+<meta charset="gbk">
+<title>jQuery Tooltip Example by Liehuo.net</title>
+  <style type="text/css">
+  
+    body {font-size: 85%; font-family: helvetica, verdana, arial, sans-serif;}
+    h1 {font-size: 1.3em;}
+    h2 {font-size: 1.2em;}
+    table { width: 70%; border-collapse: collapse;}
+    th {text-align: left;}
+    code {font-size: 1.1em;}
+    td { border: 1px solid #ccc; border-width: 1px 0; padding: 3px 6px;}
+    
+    #livetip {
+      position: absolute;
+      background-color: #cfc;
+      padding: 4px;
+      border: 2px solid #9c9;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+    }
+
+  </style>
+ 
+</head>
+<body>
+  <h1>Event Delegation Tooltip, with DRY script!</h1>
+<table id="mytable">
+  <thead>
+    <tr>
+      <th>row number</th>
+      <th>link with tooltip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="row1"><td>row 1</td><td><a title="this is a link to row 2000" href="#row2000"><strong>row 2000</strong></a></td></tr>
+    <tr id="row2"><td>row 2</td><td><a title="this is a link to row 1999" href="#row1999">row 1999</a></td></tr>
+    <tr id="row3"><td>row 3</td><td><a title="this is a link to row 1998" href="#row1998">row 1998</a></td></tr>
+    <tr id="row4"><td>row 4</td><td><a title="this is a link to row 1997" href="#row1997">row 1997</a></td></tr>
+    <tr id="row5"><td>row 5</td><td><a title="this is a link to row 1996" href="#row1996">row 1996</a></td></tr>
+    <tr id="row6"><td>row 6</td><td><a title="this is a link to row 1995" href="#row1995">row 1995</a></td></tr>
+  </tbody>
+</table>
+<script type="text/javascript" src="http://www.veryhuo.com/uploads/common/js/jquery-1.3.2.js"></script>
+<script type="text/javascript">
+jQuery(function($) {
+    var $liveTip = $('<div id="livetip"></div>').hide().appendTo('body');
+    var tipTitle = '';
+    
+    $('#mytable').bind('mouseover mouseout mousemove', function(event) {
+      var $link = $(event.target).closest('a');
+      if (!$link.length) { return; }
+      var link = $link[0];
+    
+      if (event.type == 'mouseover' || event.type == 'mousemove') {
+        $liveTip.css({
+          top: event.pageY + 12,
+          left: event.pageX + 12
+        });
+      };
+    
+      if (event.type == 'mouseover') {
+        tipTitle = link.title;
+        link.title = '';
+        $liveTip.html('<div>' + tipTitle + '</div><div>' + link.href + '</div>')
+            .show();
+      };
+    
+      if (event.type == 'mouseout') {
+        $liveTip.hide();
+        if (tipTitle) {
+            link.title = tipTitle;
+        };
+      };
+    });
+});
+</script>
+</body>
+</html>

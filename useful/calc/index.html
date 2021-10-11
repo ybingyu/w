@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<link href="" rel="stylesheet">
+<style>
+    .demo{width: 300px;background: #60f;padding: 3px 0;}
+    .box{background: #f60;height: 50px;
+        padding: 10px;
+        border: 15px solid green;
+        width: 90%;/*写给不支持calc()的浏览器*/
+        width: -moz-calc(100% - (10px + 15px) * 2);
+        width: webkit-calc(100% - (10px + 15px) * 2);
+        width: calc(100% - (10px + 15px) * 2);
+    }
+</style>
+</head>
+<body>
+    <div class="demo">
+        <div class="box"></div>
+    </div>
+</body>
+</html>

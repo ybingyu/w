@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+/*CSS Reset*/
+body,div,h1,h2,h3,h4,h5,h6,p,blockquote,dl,dt,dd,ul,ol,li,fieldset,form,tr,th,td,center,input,button,textarea{padding:0;margin:0}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+button,input,select,textarea{font-size:12px;font-family:Verdana,Arial,Helvetica,sans-serif}
+li{list-style:none}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+body{padding:50px;}
+
+.tabBody{width:500px;height:100px;border:solid 1px #CCC;font-weight:bold;font-size:32px;clear:both;}
+.tabBody li{height:100px;display:none;}
+.tabHandle{width:500px;clear:both;}
+.tabHandle li{width:100px;height:25px;line-height:25px;float:left;cursor:pointer;}
+.tabHandle li.tabon{color:#Fff; background:#FF0000;}
+</style>
+</head>
+<body>
+<div>
+<ul id="tabHnadle" class="tabHandle">
+    <li>tab1</li>
+    <li>tab2</li>
+    <li>tab3</li>
+    <li>tab4</li>
+</ul>
+</div>
+<div>
+<ul id="tabBody" class="tabBody">
+    <li id="tabBody0">123</li>
+    <li id="tabBody1">456</li>
+    <li id="tabBody2">789</li>
+    <li id="tabBody3">000</li>
+</ul>
+</div>
+<script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="tab.js"></script>
+<script type="text/javascript">
+/*
+function:	标签切换
+depends:    jquery.js(1.2.6~1.4.0)
+			ctab.js(cTab)
+*/
+cTab({
+	tabHandleList:"#tabHnadle > li",//标签头
+	tabBodyList:"#tabBody > li",//标签内容体序列
+	isAutoPlay:false,//是否自动播放
+	bind:"click",//标签绑定事件
+	defIndex:2,//默认选中标签下标
+	tabOnCssList:"#tabHnadle > li",//标签on样式添加点
+	tabOnCssName:"tabon",//选中标签样式
+	callBack:function(i){
+		//$('#tabBody'+i).html('切换回调<br />标签在第'+ i +'项!');
+	}//回调
+});
+</script>
+</body>
+</html>

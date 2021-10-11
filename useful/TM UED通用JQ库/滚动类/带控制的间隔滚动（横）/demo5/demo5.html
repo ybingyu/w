@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<style type="text/css">
+ul,li{padding:0;margin:0;}
+li{list-style:none;}
+.glSlide{height:100px;width:400px;overflow:hidden;}
+.glSlide li{height:100px;width:100px;float:left;}
+.disable{color:#999;}
+</style>
+</head>
+<body>
+<!--轮播-->
+<div class="glSlide" id="glSlide">
+    <ul>
+		<li><img src="peop5.jpg" /></li>
+        <li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+		<li><img src="peop5.jpg" /></li>
+    </ul>
+</div>
+<div><a id="glSlideRight" href="#">←</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="glSlideLeft" href="#">→</a></div>
+<script type="text/javascript" src="jquery/jquery-1.4.pack.js"></script>
+<script type="text/javascript" src="glslide.js"></script>
+<script type="text/javascript">
+/*
+function:	glSlide
+depends:    jquery.js(1.2.6~1.4.0)
+			glslide.js(glSlide)
+*/
+
+$("#glSlide").glSlide({
+    isWinLoad:true,//是否window onload后加载
+	productScrollWitch:"ul",//相对this选择器，产生滚动条的大div
+	list:"ul > li",//相对this选择器，list对象
+	seeColumn:4,//可视范围分列数目
+	step:1,//滚动步长
+	speed:"normal",//滚动速度
+	orientation:"left",//自动轮播开启时会以设定方向滚动，否则只作为待滚定位，只有上下，top,bottom
+	isAutoPlay:2000,//自动播放时间间隔
+	isBtn:{
+		left:"#glSlideLeft",//向上按钮
+		right:"#glSlideRight",//向下按钮
+		isChangeState:true//按钮事件是否触发滚动方向状态
+	}//按钮树配置
+});
+</script>
+<!--/轮播-->
+<br />
+请保持3层嵌套结构<br />
+div外层结构提供可整除可视列数的固定宽度，并保证标签处于overflow:hidden;状态<br />
+ul尽量保持标签样式干净如无必要尽量不加样式修饰
+</body>
+</html>
