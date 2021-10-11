@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<title>8</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+</head>
+<body>
+<p>8. 定义一个字符串 var str1="2015-05-21 10:40:30" 要求：将其转换为这种格式：   2015年 05月 21日10时40分30秒</p> 
+<script>
+    var str1 = '2015-05-21 10:40:30';
+    var reg = /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/;
+    document.write(str1.replace(reg,'$1年 $2月 $3日$4时$5分$6秒'));
+
+
+</script>
+
+1. 正则表达式判断标签是否闭合（注意闭合标签有两种形式：<img />、 <div></div>） （ 秋萍）
+
+2. 校验密码：只能输入6-20个字母、数字、下划线 （刘舒）
+
+3. 检查输入的是否为非负数，并且允许为浮点数（小数点后保留2位）（文清）
+
+4. 返回字符串的中文字符个数  （章乐） 
+
+5. 利用正则将一个字符串中的连续空格替换为一个。如“zhufeng                      peixun class name”---- “zhufeng peixun class name” （天恩）
+
+6. 图像文件扩展名正则表达式模式 （林静）  
+
+7. 写出同时包含abc三个字母(三个字母各出现一次)，但不考虑顺序的正则表达式  （潘妮）
+如:      匹配        不匹配  
+         abcd        abdea  
+         acbd        bdcc  
+         cab          db
+
+8. 定义一个字符串 var str1="2015-05-21 10:40:30" 要求：将其转换为这种格式：   2015年 05月 21日10时40分30秒 （冰羽）
+
+9. 16进制颜色代码正则表达式模式 （仕娟）
+
+10. 用正则表达式获得文件名（注意，文件路径深度未知，可能是d:/1.txt或E:/psd/work/1.jpg） （雁斌）
+
+11. 手机号码正则表达式 （敏利）
+
+12. 验证由26个小写英文字母组成的字符串 （丽娜）
+</body>
+</html>

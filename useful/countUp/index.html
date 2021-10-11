@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>countUp</title>
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <p id="myTargetElement"></p>
+    <p id="myTargetElement2"></p>
+    <p id="myTargetElement3"></p>
+    <p id="myTargetElement4"></p>
+    <p id="myTargetElement5"></p>
+    <p id="myTargetElement6"></p>
+</body>
+<script src="countUp.js"></script>
+<script>
+    var options = {
+      useEasing : true, 
+      useGrouping : true, 
+      separator : '', 
+      decimal : '' ,
+      prefix : '' ,
+      suffix : '' 
+    }
+    var demo = new countUp(document.getElementById("myTargetElement"), 0, 1094.62, null, 120, options);
+    demo.start();
+    var demo3 = new countUp(document.getElementById("myTargetElement3"), 0, 1094.62, null, 120, options);
+    demo3.start();
+    var demo4 = new countUp(document.getElementById("myTargetElement4"), 0, 1094.62, null, 120, options);
+    demo4.start();
+    var demo5 = new countUp(document.getElementById("myTargetElement5"), 0, 1094.62, null, 120, options);
+    demo5.start();
+    var demo2 = new countUp(document.getElementById("myTargetElement2"), 0, 1094.62, null, 120, options);
+    demo2.start();
+</script>
+</html>

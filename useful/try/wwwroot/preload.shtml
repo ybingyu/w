@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>preload demo</title>
+<link href="" rel="stylesheet">
+<style type="text/css">
+	body{font-size:100px;}
+</style>
+</head>
+<body>
+<p id="load"></p>
+
+</body>
+<script type="text/javascript" src="js/preload.js"></script>
+<script type="text/javascript">
+	var domLoad = document.getElementById('load');
+	var p = new preload();
+	var l = p.load([
+			['audio','bomb.wav'],
+			['audio','begin.mp3'],
+			['audio','curtain.wav'],
+			['audio','result.wav'],
+			['img','cyfl.jpg'],
+			['audio','game.ogg']
+		],function(){
+			// load all
+			domLoad.innerHTML = '全部加载完成';
+			// load方法返回的audio数组 可以通过文件名为key调用
+			l.audio['begin.mp3'].loop = true;
+			window.ontouchend = function(){
+				if(l.audio['begin.mp3'].paused){
+					l.audio['begin.mp3'].play();
+				}else{
+					l.audio['begin.mp3'].pause();
+				}
+			}
+		},function(curLength,totalLength){
+			domLoad.innerHTML = '当前加载数:' + curLength + '<br/>总资源数:' + totalLength;
+		});
+</script>
+</html>

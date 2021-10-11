@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>翻书特效</title>
+  <link rel="stylesheet" href="css/jquery.booklet.latest.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="flipbook">
+    <div class="hard"> Turn.js </div>
+    <div class="hard"></div>
+    <div class="page1"> Page 1 </div>
+    <div class="page2"> Page 2 </div>
+    <div class="page3"> Page 3 </div>
+    <div class="page4"> Page 4 </div>
+    <div class="page5"> Page 5 </div>
+    <div class="page6"> Page 6 </div>
+    <div class="page7"> Page 7 </div>
+    <div class="page8"> Page 8 </div>
+    <div class="hard"></div>
+    <div class="hard"></div>
+  </div>
+  <a href="javascript:;" class="btn prev">上一页</a>
+  <a href="javascript:;" class="btn next">下一页</a>
+  <script src="https://my.99.com/script/jquery.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.booklet.latest.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#flipbook').booklet({
+        manual: false,
+        width: 1728,
+        height: 515,
+        overlays: true,
+        hovers: true,
+        next: $('.next'),
+        shadows: false, prev: $('.prev'), pageNumbers: false
+      });
+    });
+    /* $("#flipbook").turn({
+      width: 800,
+
+  			height: 515,
+
+			duration: 1000,   //翻页速度，值越小越快
+
+			// Hardware acceleration
+
+
+			// Enables gradients
+
+			gradients: true,			
+
+			// Auto center this flipbook
+
+			// autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 100,
+
+			// The number of pages
+
+			// pages: 7
+    });
+    $('.next').click(function () {
+      $("#flipbook").turn("next");
+    })
+    $('.prev').click(function () {
+      $("#flipbook").turn("previous");
+    }) */
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <canvas width="400" height="400" id="canvas"></canvas>
+</body>
+<script>
+    function Arrow(){  
+            //定义位置属性  
+        this.x=0;  
+        this.y=0;  
+            //定义旋转角度及缩放  
+        this.rotation=0;  
+        this.scaleX=1;  
+        this.scaleY=1;  
+            //定义填充色及画笔宽度  
+        this.color='#00ff00';  
+        this.lineWidth=1;  
+    }  
+    //绘制方法  
+    Arrow.prototype.paint=function(context){  
+            //保存场景  
+        context.save();  
+            //坐标系转换，缩放及旋转  
+        context.translate(this.x,this.y);  
+        context.scale(this.scaleX,this.scaleY);  
+        context.rotate(this.rotation);  
+            //定义填充色及画笔  
+        context.fillStyle=this.color;  
+        context.lineWidth=1;  
+            //绘制箭头  
+        context.beginPath();  
+        context.moveTo(-50,-25);  
+        context.lineTo(0,-25);  
+        context.lineTo(0,-50);  
+        context.lineTo(50,0);  
+        context.lineTo(0,50);  
+        context.lineTo(0,25);  
+        context.lineTo(-50,25);  
+        context.closePath();  
+            //填充  
+        context.fill();  
+        if(context.lineWidth>0){  
+            context.stroke();  
+        }  
+        context.restore();  
+    } 
+     window.onload = function(){
+        var arrow = new Arrow();
+        var canvas = document.getElementById("canvas");
+        arrow.paint(canvas);
+     }
+</script>
+</html>

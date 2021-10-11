@@ -1,0 +1,83 @@
+/* CSS Document
+Use for:    
+Version:    
+Date:       2015-05-19 16:53:35
+Author:     Your Name
+Update:      
+*/
+.count-down {
+    font: 50px/74px "Microsoft Yahei";
+    color: #f22e1f;
+    text-shadow: 1px 1px 5px #000;
+}
+
+.count-down li {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 74px;
+    position: relative;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.count-down li span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+
+.top {
+    height: 50%;
+    top: 0;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    background: #f2c497;
+    background: -moz-linear-gradient(top, #f2c497 0%, #e7966c 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2c497), color-stop(100%, #e7966c));
+    background: -webkit-linear-gradient(top, #f2c497 0%, #e7966c 100%);
+}
+
+.bottom {
+    height: 100%;
+    top: 0;
+    border-radius: 5px;
+    background: #f2c497;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f2c497), color-stop(50%, #e7966c), color-stop(100%, #f2c497));
+    background: -webkit-linear-gradient(top, #f2c497 0%, #e7966c 50%, #f2c497 100%);
+    background: -ms-linear-gradient(top, #f2c497 0%, #e7966c 50%, #f2c497 100%);
+    background: linear-gradient(to bottom, #f2c497 0%, #e7966c 50%, #f2c497 100%);
+}
+.bottom.current{
+	z-index: 1;
+}
+.bottom.next{
+	z-index: 2;
+}
+.top.next{
+	z-index: 3;
+
+	transform : rotateX(90deg);
+	-webkit-transform : rotateX(90deg);
+	transform-origin : left bottom;
+	-webkit-transform-origin : left bottom;
+}
+.top.current{
+	z-index: 4;
+}
+
+.changing .top.current{
+	transform : rotateX(-90deg);
+	-webkit-transform : rotateX(-90deg);
+	transform-origin : left bottom;
+	-webkit-transform-origin : left bottom;
+	transition : transfrom 0.25s ease-in;
+	-webkit-transition : -webkit-transfrom 0.25s ease-in;
+}
+
+.changed .top.current,
+.changed .bottom.current {
+  display: none;
+}
