@@ -1,0 +1,33 @@
+/* CSS Document
+Use for:    website
+Version:    1.0
+Date:       2015-04-07 14:14:37
+Author:     Bingyu Yuan
+*/
+
+/***********************reset***********************/
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,p,form{margin:0}
+body,button,input,select,textarea{font:12px/1.5 tahoma,'\5b8b\4f53',sans-serif}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+em,b{font-style:normal}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+img{border:0}
+button,input,select,textarea{font-size:100%;outline:none}
+table{border-collapse:collapse;border-spacing:0}
+td,th,ul,ol{padding:0}
+
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{ zoom:1;}
+.dn{display:none}
+.fl{float: left;}
+.fr{float: right;}
+.text-hide{overflow: hidden;line-height: 0; text-indent: -99999px;}
+
+.full-bg{background: url("../image/full-bg.jpg") no-repeat top center;}
+.wrapper{width: 1002px;margin: 0 auto;overflow: hidden;}
+/************************************
+*扉页
+*************************************/
+/*---------- header ----------*/
+/*栏目*/

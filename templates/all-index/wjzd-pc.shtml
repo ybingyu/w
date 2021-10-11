@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>《无境战地》官方网站-网龙首款次世代开放式MOBA微端游戏</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="Description" content="《无境战地》是由网龙网络公司自主研发的开放式MOBA微端游戏，革新传统竞技玩法，集合爽快的动作竞技与次世代主流美术风格为一体，并融入卡牌类游戏技能搭配玩法，必将为您带来全新的战斗体验！"
+  />
+  <meta name="Keywords" content="无境战地官网,3D,微端,热血对战,无境,无尽,PVP,竞技场,战场" />
+  <meta name="author" content="Bindy.Yuan(128080) | 2018-03-14">
+  <script src="https://news.99.com/script/g_topmenu.js" charset="GBK"></script>
+  <script src="https://wjzd.99.com/script/public.js"></script>
+
+
+  <link href="css/style.css" rel="stylesheet">
+  <script>
+    var HANDLE_LINK = '/m';
+  </script>
+  <script>
+    function handleRouter() {
+      var ua = Public.checkMobile();
+      var link = HANDLE_LINK || '/m';
+      if (ua.mobile) {
+        window.location.href = link;
+      }
+    }
+    // handleRouter();
+  </script>
+
+</head>
+
+<body>
+  <div class="full-bg">
+    <script type="text/javascript">topMenu();</script>
+    
+    <div class="wrapper">
+      <h1 class="logo">
+        <script>
+          Public.setLogo(true);
+        </script>
+      </h1>
+
+      <div class="footer">
+        <script>
+          publicBottom(site.wjzd, 900, "_blank");
+        </script>
+      </div>
+    </div>
+  </div>
+  <script src="https://wjzd.99.com/script/jquery/jquery-1.12.4.min.js"></script>
+
+
+  <!--stats-code-->
+  <div class="hide">
+    <script type="text/javascript">
+      Public.pings();
+    </script>
+  </div>
+  <!--/stats-code-->
+
+</body>
+
+</html>

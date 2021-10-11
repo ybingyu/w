@@ -1,0 +1,56 @@
+/***************************************
+*reset
+***************************************/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td ,span, object, iframe{ padding: 0; margin: 0; } table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: 0; }
+ol, ul { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; font-size: 100%; }
+q:before, q:after { content:""; }
+
+
+
+
+/*****************************清除浮动***********************/
+1.
+.clear:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.clear {+display:none; clear:both }
+2.建议
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{ zoom:1;}
+.clear { clear:both }
+
+/***********************手机页面***************/
+@charset "utf-8";
+html{ height:100%; font-size:6.25%; -webkit-text-size-adjust:none; }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; }
+body { font-size: 16rem; font-family: 'Microsoft Yahei', 'Simsun'; color: #9b9b9b; line-height: 150%; background:#eaeaea; -webkit-text-size-adjust: none; margin: 0 auto; min-width:320px;}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+address, cite, dfn, em, var, i { font-style: normal; }
+code, kbd, pre, samp { font-family: courier new, courier, monospace; }
+form { display: inline; }
+small { font-size: 12px; }
+ul, ol { list-style: none; }
+a { text-decoration: none; color: #9b9b9b; outline: none; }
+a:active {}
+img { vertical-align: middle; border: 0; -ms-interpolation-mode: bicubic; margin:0; padding:0;}
+button, input, select, textarea { font-size: 100%; vertical-align: middle; outline: none; -webkit-appearance: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+textarea { resize: none; }
+.l { float: left; display: inline; }
+.r { float: right; display: inline; }
+.t_i{ text-indent:2em}
+.hidden { line-height: 99999px; overflow: hidden }
+.text-c{ text-align:center;}
+.clearfix:after { content: ""; height: 0; visibility: hidden; display: block; clear: both; }
+.clearfix { zoom: 1; }
+.clear { clear: both }
+
+
+手机页面添加内容
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+<meta content="width=100%; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport">
+
+
+
+
