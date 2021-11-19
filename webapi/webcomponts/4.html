@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 组件（4）</title>
+    <style>
+        .ipt{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shadow DOM</h1>
+    <search-box>
+    </search-box>
+
+
+
+    <script src="search4.js"></script>
+    <script>
+        // 对```querySelector()```等常规DOM遍历方法不可见
+        console.log(document.querySelector('.ipt'))
+        // 不会出现在它们宿主元素的```children```数组中
+        console.log(document.querySelector('body').children)
+
+        // 当open时，可以用shadowRoot属性访问到银子根节点的元素
+        console.log(document.querySelector('search-box').shadowRoot)
+    </script>
+
+</body>
+
+</html>

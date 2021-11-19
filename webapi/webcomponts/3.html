@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 组件（3）</title>
+    <style>
+        /* .ipt {
+            background: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>HTML模板</h1>
+    <search-box>
+    </search-box>
+
+    <template id="search">
+        <style>
+            .ipt {
+                border: 1px solid #ddd;
+                padding: 5px
+            }
+        </style>
+        <div class="search">
+            <input type="text" class="ipt" placeholder="请输入搜索内容">
+        </div>
+    </template>
+
+    <script src="search3.js"></script>
+
+
+</body>
+
+</html>

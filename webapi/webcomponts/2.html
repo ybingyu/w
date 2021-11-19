@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 组件（2）</title>
+    <style>
+        /* 
+         * 让<search-box>组件在有定义前不可见
+         * 也可以设定宽高，以便组件显示后其他元素不被移动
+         */
+        /* search-box:not(:defined){
+            visibility: hidden;
+        } */
+    </style>
+</head>
+
+<body>
+    <h1>使用Web组件</h1>
+    <search-box width="200px" placeholder="2">
+        <span slot="left">搜索</span>
+    </search-box>
+
+    <template id="search">
+        <div class="search">
+            <slot name="left"></slot>
+            <input type="text" class="ipt" placeholder="请输入搜索内容">
+        </div>
+    </template>
+
+    <!-- 把脚本注释掉，模拟js还没加载解析时浏览器对自定义组件的操作。这时候slot会显示到页面上。需要添加CSS -->
+    <!-- <script src="search2.js"></script> -->
+
+
+</body>
+
+</html>
