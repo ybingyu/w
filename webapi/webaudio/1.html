@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web auido api 基本用法</title>
+    
+</head>
+
+<body>
+    <a href="javascript:;" onclick="play()" id="btn">播放</a>
+    <script>
+        const context = new AudioContext();
+        let source;
+        let playState = false; // 播放状态
+        fetch('sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                console.log('audioBuffer====', audioBuffer)
+                //创建AudioBufferSourceNode对象
+                source = context.createBufferSource();
+                source.buffer = audioBuffer;
+                console.log('AudioBufferSourceNode====', source)
+                // 链接节点
+                source.connect(context.destination);
+
+
+                play()
+            });
+
+        function play() {
+            if (!playState) {
+                // 播放声音
+                source.start(0);
+                console.log('play')
+            } else {
+                // 停止播放
+                source.stop();
+                console.log('stop')
+            }
+            playState = !playState
+            document.getElementById('btn').innerHTML = !playState ? '播放' : '暂停'
+        }
+    </script>
+</body>
+
+</html>

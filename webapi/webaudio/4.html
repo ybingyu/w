@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web auido api 绘制缓慢下落的帽头</title>
+    <style>
+        #canvas {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;" onclick="play()" id="btn">播放</a>
+    <canvas id="canvas" width="800" height="300"></canvas>
+    <script>
+        const context = new AudioContext();
+
+        let analyser;
+        let source
+        fetch('sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                //创建分析器
+                analyser = context.createAnalyser();
+
+                //创建AudioBufferSourceNode对象
+                source = context.createBufferSource();
+                //将source与分析器链接
+                source.connect(analyser);
+                //将分析器与destination链接，这样才能形成到达扬声器的通路
+                analyser.connect(context.destination);
+                source.buffer = audioBuffer;
+                play()
+            });
+
+        function play() {
+            try {
+                // 播放声音
+                source.start(0);
+            } catch (error) {
+                console.log(error)
+            }
+            //开始绘制频谱图
+            var canvas = document.getElementById('canvas'),
+                cwidth = canvas.width,
+                cheight = canvas.height - 2,
+                meterWidth = 10, //能量条的宽度
+                gap = 2, //能量条的间距
+                meterNum = 800 / (10 + 2); //计算当前画布上能画多少条
+            var ctx = canvas.getContext('2d');
+            var capHeight = 2, //冒头的高度
+                capStyle = '#fff', //冒头的颜色
+                capYPositionArray = []; //将上一面各个冒头的位置保存到这个数组
+            //定义一个渐变样式用于画图
+            var gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(1, '#0f0');
+            gradient.addColorStop(0.5, '#ff0');
+            gradient.addColorStop(0, '#f00');
+            //绘制频谱图
+            function drawSpectrum() {
+                var array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                var step = Math.round(array.length / meterNum); //计算从analyser中的采样步长
+                //清理画布
+                ctx.clearRect(0, 0, cwidth, cheight);
+                //对信源数组进行抽样遍历，画出每个频谱条
+                for (var i = 0; i < meterNum; i++) {
+                    var value = array[i * step]; //取样作为y轴的值 //绘制缓慢降落的冒头 
+                    if (capYPositionArray.length < Math.round(meterNum)) {
+                        capYPositionArray.push(
+                            value); //初始化保存冒头位置的数组，将第一个画面位置保存 
+                    }
+                    ctx.fillStyle = capStyle; //1.开始绘制冒头 
+                    if (value < capYPositionArray[i]
+                    ) { //使用前一次数据 
+                        ctx.fillRect(i * 12, cheight - (--capYPositionArray[i]), meterWidth,
+                            capHeight);
+                    } else { //否则，直接使用当前数据并记录 
+                        ctx.fillRect(i * 12, cheight - value, meterWidth, capHeight);
+                        capYPositionArray[i] = value;
+                    } //2.开始绘制频谱条 
+                    ctx.fillStyle=gradient; ctx.fillRect(i * 12/*频谱条的宽度+条间距*/,
+                    cheight - value + capHeight, meterWidth, cheight);
+            }
+            requestAnimationFrame(drawSpectrum);
+        }
+        requestAnimationFrame(drawSpectrum);
+        }
+    </script>
+</body>
+
+</html>

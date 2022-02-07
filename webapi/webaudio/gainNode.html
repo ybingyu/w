@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gainNode音量处理器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+    </script>
+</head>
+
+<body>
+    <button onclick="play()">播放</button>
+    <input type="range" id="range" min="0" max="1" step="0.1" value="0" onchange="change()">
+    <script>
+        const context = new(window.AudioContext || window.webkitAudioContext)();;
+        let source;
+        let gainNode
+        let playState = false; // 播放状态
+        let updateVolume = volume => gainNode.gain.value = volume;
+
+        let request = new XMLHttpRequest ();
+
+        request.open( 'GET', 'sound.mp3', true );
+
+        request.responseType = 'arraybuffer';
+
+        request.onload = () => {
+            context.decodeAudioData(request.response, (audioBuffer) => {
+                if (!audioBuffer) {
+                    alert( 'error decoding file data: ' );
+                    return;
+                } else {
+                    source = context.createBufferSource();
+                    gainNode = context.createGain();
+                    source.buffer = audioBuffer;
+                    source.connect(gainNode);
+                    gainNode.connect(context.destination);
+                }
+            })
+
+        }
+
+        request.onerror =  function () { alert( 'BufferLoader: XHR error'  ); }
+
+        request.send();
+
+       
+
+        function play() {
+            source.start(0);
+            updateVolume(0)
+        }
+
+        function change() {
+            var value = document.getElementById('range').value
+            updateVolume(value)
+        }
+    </script>
+</body>
+
+</html>
