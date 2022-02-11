@@ -6,12 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web auido api 播放/暂停</title>
-    <script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
-    <script>
-        // init vConsole
-        var vConsole = new VConsole();
-    </script>
+    
 </head>
 
 <body>
@@ -39,6 +34,8 @@
                  source.buffer = audioBuffer;
                  // 链接节点
                  source.connect(context.destination);
+
+                 source.looping = true
 
                 // 播放声音
                 source.start(0);

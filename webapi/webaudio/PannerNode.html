@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PannerNode 3D 环绕音效</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+    </script> -->
+</head>
+
+<body>
+    <button onclick="play()">播放</button>
+    <p>x<input type="range" name="rangeX" value="0" max="10" min="-10" onchange="change()" id="rangeX"></p>
+    <p>y<input type="range" name="rangeY" value="0" max="10" min="-10" onchange="change()" id="rangeY"></p>
+    <p>z<input type="range" name="rangeY" value="0" max="10" min="-10" onchange="change()" id="rangeZ"></p>
+    <script>
+        const context = new AudioContext();
+        const source = context.createBufferSource();
+        const pannerNode = context.createPanner();
+
+        fetch('sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                source.buffer = audioBuffer;
+                source.connect(pannerNode);
+
+                pannerNode.connect(context.destination);
+            });
+
+        function play() {
+            source.start(0);
+        }
+
+        function change() {
+            var valuex = document.getElementById('rangeX').value
+            var valuey = document.getElementById('rangeY').value
+            var valuez = document.getElementById('rangeZ').value
+            pannerNode.setPosition(valuex, valuey, valuez )
+            console.log(valuex,valuey,valuez)
+        }
+    </script>
+</body>
+
+</html>

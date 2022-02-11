@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiquadFilterNode低阶滤波器</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+    </script> -->
+</head>
+
+<body>
+    <button onclick="play()">播放</button>
+    <p>type:<select id="type" onchange="changeType()">
+            <option value="lowpass">lowpass</option>
+            <option value="highpass">highpass</option>
+            <option value="bandpass">bandpass</option>
+            <option value="lowshelf">lowshelf</option>
+            <option value="highshelf">highshelf</option>
+            <option value="peaking">peaking</option>
+            <option value="notch">notch</option>
+            <option value="allpass">allpass</option>
+        </select></p>
+    <p>frequency:<input type="range" id="frequency" min="0" max="24000" step="100" value="350"
+            onchange="changeFrequency()">
+    </p>
+    <p>Q:<input type="range" id="Q" min="0.0001" max="1000" step="10" value="1" onchange="changeQ()">
+    </p>
+    <p>detune:<input type="range" id="detune" min="0.0001" max="1000" step="10" value="1" onchange="changeDetune()">
+    </p>
+
+
+
+    <script>
+        const context = new AudioContext();
+        const source = context.createBufferSource();;
+        const biquadFilter = context.createBiquadFilter();
+
+
+        fetch('sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                source.buffer = audioBuffer;
+                source.connect(biquadFilter);
+                biquadFilter.connect(context.destination);
+
+                console.log('biquadFilter.type', biquadFilter.type)
+                console.log('biquadFilter.frequency', biquadFilter.frequency)
+                console.log('biquadFilter.Q', biquadFilter.Q)
+                console.log('biquadFilter.detune', biquadFilter.detune)
+            });
+
+
+
+        function play() {
+            source.start(0);
+        }
+
+
+        // 操纵 Biquad 过滤器
+
+        /* type */
+        function changeType() {
+            var value = document.getElementById('type').value
+            biquadFilter.type = value;
+        }
+
+        /* frequency */
+        function changeFrequency() {
+            var value = document.getElementById('frequency').value
+            biquadFilter.frequency.value = value
+        }
+
+        /* Q */
+        function changeQ() {
+            var value = document.getElementById('Q').value
+            biquadFilter.Q.value = value;
+        }
+        /* detune */
+        function changeDetune() {
+            var value = document.getElementById('detune').value
+            biquadFilter.detune.value = value;
+        }
+    </script>
+</body>
+
+</html>

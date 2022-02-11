@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gainNode音量处理器</title>
+    <title>gainNode音量淡入淡出</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
     <script>
         // init vConsole
@@ -16,8 +16,6 @@
 <body>
     <button onclick="play()">播放</button>
     <input type="range" id="range" min="0" max="1" step="0.1" value="1" onchange="change()">
-    <button onclick="soundout()">淡出</button>
-    <button onclick="soundin()">淡入</button>
     <script>
         const context = new AudioContext();
         const source = context.createBufferSource();;
@@ -39,17 +37,6 @@
         function change() {
             var value = document.getElementById('range').value
             gainNode.gain.value = value;
-        }
-
-        /* 音量淡出 */
-        function soundout() {
-            // 在2秒内音量递减到0
-            gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 2);
-        }
-        /* 音量淡入 */
-        function soundin() {
-            // 在2秒内音量递减到0
-            gainNode.gain.linearRampToValueAtTime(1, context.currentTime + 2);
         }
     </script>
 </body>

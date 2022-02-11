@@ -26,6 +26,7 @@ class SearchBox extends HTMLElement {
 
     // 这个回调会在上面列出的属性变化时被调用，从自定义元素被解析时开始，包括之后的变化
     attributeChangedCallback(name, oldValue, newValue) {
+        console.log('attributeChangedCallback', name, oldValue, newValue)
         switch (name) {
             case 'placeholder':
                 this.placeholder = newValue

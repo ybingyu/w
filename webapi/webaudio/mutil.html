@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多个音频源</title>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+    </script> -->
+</head>
+
+<body>
+    <button onclick="play()">播放</button>
+   
+    <script>
+        const context = new AudioContext();
+        const
+        sourceOne = context.createBufferSource();
+        const
+        sourceTwo = context.createBufferSource();
+
+        const
+        gainNodeOne = context.createGain();
+        const
+        gainNodeTwo = context.createGain();
+
+        fetch('sound.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                sourceOne.buffer = audioBuffer;
+                sourceOne.connect(gainNodeOne);
+
+               gainNodeOne.connect(context.destination);
+            });
+
+            
+        fetch('3.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => context.decodeAudioData(arrayBuffer)) // 解码二进制音频文件
+            .then(audioBuffer => {
+                sourceTwo.buffer = audioBuffer;
+                sourceTwo.connect(gainNodeTwo);
+
+                gainNodeTwo.connect(context.destination);
+
+               gainNodeTwo.gain.setValueAtTime(0.5, context.currentTime);
+
+            });
+
+        function play() {
+            sourceTwo.start(0);
+            sourceOne.start(0);
+        }
+
+       
+    </script>
+</body>
+
+</html>

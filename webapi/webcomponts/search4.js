@@ -7,7 +7,7 @@ class SearchBox extends HTMLElement {
         SearchBox.template = document.createElement('template');
         SearchBox.template.innerHTML = `
         <style>
-            // :host伪类，指代自定义元素本身。
+        /*  :host伪类，指代自定义元素本身。 */
             :host {
                 display:block;
                 background-color: #d4d4d4;
@@ -21,7 +21,7 @@ class SearchBox extends HTMLElement {
         `;
         let content = SearchBox.template.content.cloneNode(true);
 
-
+        // 插入shadow里
         shadow.appendChild(content);
 
     }
