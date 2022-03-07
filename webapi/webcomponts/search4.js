@@ -1,8 +1,8 @@
 class SearchBox extends HTMLElement {
     constructor() {
         super();// 调用超类的构造器，必须先调用
-        let shadow = this.attachShadow({ mode: 'closed' });
-        // let shadow = this.attachShadow({ mode: 'open' });
+        // let shadow = this.attachShadow({ mode: 'closed' });
+        let shadow = this.attachShadow({ mode: 'open' });
 
         SearchBox.template = document.createElement('template');
         SearchBox.template.innerHTML = `
