@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>history pushState</title>
+    <style>
+        #nav a.active {
+            color: red
+        }
+    </style>
+</head>
+
+<body onload="console.log('loaded',Math.random())">
+    <nav id="nav">
+        <a href="?p=home">home</a>
+        <a href="?p=active">active</a>
+        <a href="?p=about">about</a></nav>
+    <div id="main"></div>
+    <script>
+        function trigger(el, type) {
+            try {
+                //w3c
+                var evt = document.createEvent('Event');
+                evt.initEvent(type, true, true);
+                el.dispatchEvent(evt);
+            } catch (e) {
+                //ie
+                el.fireEvent('on' + type);
+            }
+        }
+
+
+        let main = document.getElementById('main')
+        let eleMenus = document.querySelectorAll('#nav a')
+        let aCls = 'active'
+        document.getElementById('nav').onclick = function (e) {
+            e.preventDefault()
+            let a = e.target;
+            let query = a.href.split("?")[1];
+            if (history.pushState && query && !a.classList.contains(aCls)) {
+                /* 导航样式处理 */
+                if (document.querySelector('#nav .' + aCls)) {
+                    document.querySelector('#nav .' + aCls).classList.remove(aCls);
+                }
+                a.classList.add(aCls)
+
+                /* 模拟加载数据 */
+                main.innerHTML = '加载中...'
+                setTimeout(() => {
+                    main.innerHTML = e.target.innerHTML
+                }, 1000);
+
+                /* 地址处理 */
+                let title = e.target.innerHTML
+                history.pushState({
+                    title: title
+                }, title, location.href.split("?")[0] + "?" + query);
+            }
+        }
+
+
+        let fnHashTrigger = function (target) {
+            // 解析参数
+            let query = location.href.split("?")[1],
+                eleTarget = target || null;
+            if (typeof query == "undefined") {
+                if (eleTarget = eleMenus[0]) {
+                    // 如果没有查询字符，则使用第一个导航元素的查询字符内容
+                    let title = eleTarget.innerHTML
+                    history.replaceState({
+                                title: title
+                            }, title, location.href.split("#")[0] + "?" + eleTarget.href
+                            .split("?")[1]) +
+                        location.hash;
+                    fnHashTrigger(eleTarget);
+                }
+            } else {
+                eleMenus.forEach(element => {
+                    if (eleTarget === null && element.href.split("?")[1] === query) {
+                        eleTarget = element;
+                    }
+                });
+
+                if (!eleTarget) {
+                    // 如果查询序列没有对应的导航菜单，去除查询然后执行回调
+                    let title = eleTarget.innerHTML
+                    history.replaceState({
+                        title: title
+                    }, title, location.href.split("?")[0]);
+                    fnHashTrigger();
+                } else {
+                    trigger(eleTarget, "click");
+                }
+            }
+        }
+
+        if (history.pushState) {
+            window.addEventListener("popstate", function (e) {
+                let currentState = history.state;
+                console.log('popstate', currentState)
+                // 如果不做处理，页面没有刷新，没有重新加载文档内容
+                fnHashTrigger();
+            });
+
+            // 默认载入
+            fnHashTrigger();
+        }
+    </script>
+</body>
+
+</html>

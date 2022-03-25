@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntersectionObserver-root1 </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height: 100%;
+        }
+        .box {
+            overflow: auto;
+            height: 100%;
+            padding: 40px 50px;
+        }
+
+        .inner {
+            margin: 1000px auto;
+            height: 200px;
+            background-color: #ffff00;
+            padding: 50px 100px;
+            overflow: auto;
+        }
+
+        .sub {
+                        margin: 1000px auto;
+            height: 500px;
+            background-color: #ff00ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>IntersectionObserver-root </h1>
+        <div class="inner">
+            <div class="sub"></div>
+        </div>
+    </div>
+    <script>
+        var io = new IntersectionObserver((entries) => {
+            entries.forEach(item => {
+                console.log(item.intersectionRatio)
+            })
+        }, {
+             
+        })
+
+
+        io.observe(document.querySelector('.sub'))
+    </script>
+</body>
+
+</html>

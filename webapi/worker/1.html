@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Works</title>
+</head>
+
+<body>
+    <script>
+        var worker = new Worker('1.js'); // 创建一个Worker线程
+
+        // 向线程发消息
+        worker.postMessage('Hello World'); // 发字符串
+        worker.postMessage({
+            cmd: 'start'
+        }); // 发对象
+
+
+        // 线程接收消息
+        worker.onmessage = function (e) {
+            var data = e.data;
+            switch (data.cmd) {
+                case 'wstart':
+                    console.log('main:start')
+                    worker.postMessage({
+                        cmd: 'stop'
+                    });
+                    break;
+                case 'wstop':
+                    console.log('main:stop')
+                    // 关闭线程
+                    worker.terminate();
+                    break;
+                default:
+                    console.log('main:unkown')
+            };
+        }
+
+        
+    </script>
+</body>
+
+</html>

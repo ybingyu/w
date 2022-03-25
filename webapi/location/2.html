@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>history hash</title>
+</head>
+
+<body>
+    <nav id="nav">
+        <a href="#/">home</a>
+        <a href="#/active">active</a>
+        <a href="#/about">about</a>
+    </nav>
+    <div id="main"></div>
+    <script>
+        let main = document.getElementById('main')
+        if ("onhashchange" in window) { //如果浏览器的原生支持该事件
+            window.addEventListener("hashchange", function (e) {
+                var hashVal = window.location.hash.substring(1);
+                main.innerHTML = hashVal
+            }, false);
+        }
+    </script>
+</body>
+
+</html>

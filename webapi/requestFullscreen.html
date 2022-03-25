@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestFullscreen</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+    </script>
+    <style>
+        :-webkit-full-screen {}
+
+        :-moz-full-screen {}
+
+        :-ms-fullscreen {}
+
+        :-o-fullscreen {}
+
+        :full-screen {}
+
+        :fullscreen {}
+
+        :-moz-full-screen img {
+            width: 100%;
+            display: block;
+        }
+
+        :-ms-fullscreen img {
+            width: 100%;
+            display: block;
+        }
+
+        :-o-fullscreen img {
+            width: 100%;
+            display: block;
+        }
+
+        :full-screen img {
+            width: 100%;
+            display: block;
+        }
+
+        :fullscreen img {
+            width: 100%;
+            display: block;
+        }
+
+        :-webkit-full-screen img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>requestFullscreen</h1>
+    <div id="imgbox">
+        <button id="fullscr">fullscr</button>
+        <img src="https://img9.99.com/cos/2022/guanggaotu690x368.jpg" alt=""></div>
+    <script>
+        /* 全屏 */
+        function full(ele) {
+            if (ele.requestFullscreen) {
+                ele.requestFullscreen();
+            } else if (ele.mozRequestFullScreen) {
+                ele.mozRequestFullScreen();
+            } else if (ele.webkitRequestFullscreen) {
+                ele.webkitRequestFullscreen();
+            } else if (ele.msRequestFullscreen) {
+                ele.msRequestFullscreen();
+            } else {
+                console.log('no support')
+            }
+        }
+
+        /* 退出全屏 */
+        function exitFullscreen() {
+            if (document.exitFullScreen) {
+                document.exitFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            } else {
+                console.log('no support')
+            }
+        }
+        /* 获取当前全屏的节点 */
+        function getFullscreenElement() {
+            return (
+                document.fullscreenElement ||
+                document.mozFullScreenElement ||
+                document.msFullScreenElement ||
+                document.webkitFullscreenElement || null
+            );
+        }
+        /* 判断当前是否全屏 */
+        function isFullScreen() {
+            return !!(
+                document.fullscreen ||
+                document.mozFullScreen ||
+                document.webkitIsFullScreen ||
+                document.webkitFullScreen ||
+                document.msFullScreen
+            );
+        }
+
+        var fullscreen;
+        var fsEnter = document.getElementById('fullscr');
+        fsEnter.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!fullscreen) {
+                fullscreen = true;
+                // document.documentElement.requestFullscreen();
+                full(document.getElementById('imgbox'));
+                fsEnter.innerHTML = "Exit Fullscreen";
+            } else {
+                fullscreen = false;
+                exitFullscreen();
+                fsEnter.innerHTML = "Go Fullscreen";
+            }
+        });
+    </script>
+</body>
+
+</html>

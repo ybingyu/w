@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntersectionObserver</title>
+    <style>
+        .root{
+            height: 300px;
+            overflow: auto;
+        }
+        .img {
+            display: block;
+            margin: 0 auto 10px;
+            min-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <img data-src="https://img6.99.com/newscos/2020/05/31/cjzc.png" alt="" class="img">
+        <img data-src="https://img6.99.com/newscos/2019/04/30/jdzj.jpg" alt="" class="img">
+        <img data-src="https://img6.99.com/newscos/2021/01/19/jingdouchang200300.png" alt="" class="img">
+        <img data-src="https://img6.99.com/newscos/2019/05/06/yhdld.jpg" alt="" class="img">
+        <img data-src="https://img6.99.com/newscos/2019/04/30/3c.jpg" alt="" class="img">
+        <img data-src="https://img6.99.com/newscos/2019/04/30/gzzt.jpg" alt="" class="img">
+
+    </div>
+    <script>
+        const imgList = [...document.querySelectorAll('.img')]
+
+        var io = new IntersectionObserver((entries) => {
+            console.log(entries)
+            entries.forEach(item => {
+                // isIntersecting是一个Boolean值，判断目标元素当前是否可见
+                if (item.isIntersecting) {
+                    item.target.src = item.target.dataset.src
+                    // 图片加载后即停止监听该元素
+                    io.unobserve(item.target)
+                }
+            })
+        }, {
+            root: document.querySelector('.root')
+        })
+
+        // observe遍历监听所有img节点
+        imgList.forEach(img => io.observe(img))
+    </script>
+</body>
+
+</html>

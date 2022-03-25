@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webstate</title>
+</head>
+
+<body>
+    <script>
+        // 通过window.navigator.onLine可以返回当前的网络状态
+        alert(window.navigator.onLine);
+
+        // 当网络连接此事件会触发
+        window.addEventListener('online', function () {
+            alert('网络已连接');
+        });
+        // 当网络断开此事件会触发
+        window.addEventListener('offline', function () {
+            alert('网络已断开');
+        })
+    </script>
+</body>
+
+</html>

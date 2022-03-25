@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutationObserver</title>
+</head>
+
+<body>
+    <div id='app' class='block' name='target'>
+        target的第一个子节点
+        <p>
+            <span>target的后代</span>
+        </p>
+    </div>
+    <script>
+        var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver;
+        // 监测浏览器是否支持
+        var observeMutationSupport = !!MutationObserver;
+        if (observeMutationSupport) {
+            var observer = new MutationObserver(function (records) {
+                records.map(function (record) {
+                    console.log( record.type);
+                });
+            });
+
+            observer.observe(document.getElementById('app'), {
+                  attributes: true,
+                  characterData: true,
+                  childList: true,
+                  subtree: true,// 忽略或设置为false，只观察父节点的更改
+                  attributeOldValue: true,
+                  characterDataOldValue: true
+            })
+        }
+    </script>
+</body>
+
+</html>

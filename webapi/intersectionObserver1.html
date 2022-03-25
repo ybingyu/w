@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntersectionObserver</title>
+    <style>
+        body{
+            padding-bottom: 5000px;
+        }
+        .box {
+            height: 1300px;
+            background-color: #ffff00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>基本用法</h1>
+    <div class="box">
+        
+    </div>
+    <script> 
+        var io = new IntersectionObserver((entries) => {
+            console.log(entries)// 观察对象数组
+            entries.forEach(item => {
+                // isIntersecting是一个Boolean值，判断目标元素当前是否可见
+                console.log(item.isIntersecting)// 会输出两次，一次显示，一次隐藏
+            })
+        })
+
+        
+        io.observe(document.querySelector('.box'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntersectionObserver-threshold</title>
+    <style>
+        body{
+            padding: 5000px 20px;
+        }
+        .box {
+            height: 1300px;
+            background-color: #ffff00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>IntersectionObserver-threshold</h1>
+    <div class="box">
+        
+    </div>
+    <script> 
+        var io = new IntersectionObserver((entries) => {
+            entries.forEach(item => {
+                console.log(item.isIntersecting)
+            })
+        },{
+           rootMargin: '1000px 0'
+        })
+
+        
+        io.observe(document.querySelector('.box'))
+    </script>
+</body>
+
+</html>

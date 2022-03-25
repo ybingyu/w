@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie</title>
+</head>
+
+<body>
+    <script>
+        /* 获得cookie */
+        function getCookies() {
+            let cookies = new Map(); // 要返回的对象
+            let all = document.cookie; // 取得包含所有cookie的大字符串
+            let list = all.split(';'); // 将字符串拆分撑一个个的名/值键值对
+            for (let cookie of list) {
+                if (!cookie.includes('=')) continue; //如果没有=就跳过
+                let a = cookie.split('=');
+                const [name, value] = [a[0], a[1]] // 对名/值进行结构
+                cookies.set(name, value)
+            }
+            return cookies
+        }
+        console.log(document.cookie)
+        let cookies = getCookies()
+        console.log(cookies)
+        console.log('a:', cookies.get('a'))
+
+        /* 存储cookie */
+        function setCookie(name, value, sec = null) {
+            let cookie = `${name} = ${encodeURIComponent(value)}`
+            if (sec != null) {
+                cookie += `; max-age=${sec}`
+            }
+            document.cookie = cookie
+        }
+
+        // setCookie('c',2,2000);// 增加
+        // setCookie('c',3,2000);// 修改
+        // setCookie('c',3,0);// 删除
+    </script>
+</body>
+
+</html>

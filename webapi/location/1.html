@@ -22,6 +22,10 @@
                 ['search',lc.search],
             ]
         )
+
+        let url = new URL(lc)
+        let query = url.searchParams.get('a')
+        console.log('query a:',query)
     </script>
 </body>
 </html>

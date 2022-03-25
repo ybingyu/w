@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage</title>
+</head>
+
+<body>
+    <script>
+        const useStorage = (storageKey = "authorization") => {
+            const localKey = `devpoint.local.${storageKey}`;
+
+            const toJson = (str) => {
+                try {
+                    return JSON.parse(str);
+                } catch {
+                    return str;
+                }
+            };
+            const toStringfy = (value) => {
+                try {
+                    return JSON.stringify(value);
+                } catch {
+                    return value;
+                }
+            }
+
+            const save = (data) => {
+                window.localStorage.setItem(localKey, JSON.stringify(data));
+            };
+
+            const get = () => {
+                const localData = window.localStorage.getItem(localKey);
+                if (localData && localData !== "") {
+                    return toJson(localData);
+                } else {
+                    return false;
+                }
+            };
+            /**
+             * Delete
+             */
+            const del = () => {
+                window.localStorage.removeItem(localKey);
+            };
+            /**
+             * 清除所有的 localStorage
+             */
+            const clear = () => {
+                window.localStorage.clear();
+            };
+            // 返回存储对象处理方法
+            return {
+                save,
+                get,
+                del,
+                clear,
+            };
+        };
+        const storageAuth = useStorage();
+        const loginInfo = {
+            username: "DevPoint",
+            age: 30,
+        };
+        storageAuth.save(loginInfo);
+        console.log(storageAuth.get());
+    </script>
+</body>
+
+</html>
