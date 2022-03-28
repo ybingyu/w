@@ -21,18 +21,19 @@
         var observeMutationSupport = !!MutationObserver;
         if (observeMutationSupport) {
             var observer = new MutationObserver(function (records) {
+                console.log('records', records);
                 records.map(function (record) {
-                    console.log( record.type);
+                    console.log(record.type);
                 });
             });
 
             observer.observe(document.getElementById('app'), {
-                  attributes: true,
-                  characterData: true,
-                  childList: true,
-                  subtree: true,// 忽略或设置为false，只观察父节点的更改
-                  attributeOldValue: true,
-                  characterDataOldValue: true
+                attributes: true,
+                characterData: true,
+                childList: true,
+                subtree: true, // 忽略或设置为false，只观察父节点的更改
+                attributeOldValue: true,
+                characterDataOldValue: true
             })
         }
     </script>

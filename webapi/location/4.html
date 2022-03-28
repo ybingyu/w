@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>history pushState</title>
+    <style>
+        #nav a.active {
+            color: red
+        }
+    </style>
+</head>
+
+<body onload="console.log('loaded',Math.random())">
+    控制台输入
+    <pre>
+        var stateObj = { foo: "bar" };
+        history.pushState(stateObj, "page 2", "2.html");
+    </pre>
+    <script>
+        if (history.pushState) {
+            window.addEventListener("popstate", function (e) {
+                let currentState = history.state;
+                console.log('popstate', currentState)
+            });
+        }
+    </script>
+</body>
+
+</html>

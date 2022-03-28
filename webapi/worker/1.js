@@ -15,7 +15,7 @@ self.addEventListener('message', function (e) {
                 self.close(); // Terminates the worker.
             }, 2000);
             break;
-        default:
-            self.postMessage('Unknown command: ' + data);
+        // default:
+            // self.postMessage('Unknown command: ' + data);
     };
 }, false);
