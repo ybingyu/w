@@ -18,7 +18,7 @@
             for (let cookie of list) {
                 if (!cookie.includes('=')) continue; //如果没有=就跳过
                 let a = cookie.split('=');
-                const [name, value] = [a[0], a[1]] // 对名/值进行结构
+                const [name, value] = [a[0].trimStart(), a[1]] // 对名/值进行结构
                 cookies.set(name, value)
             }
             return cookies

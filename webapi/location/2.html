@@ -18,6 +18,7 @@
         if ("onhashchange" in window) { //如果浏览器的原生支持该事件
             window.addEventListener("hashchange", function (e) {
                 var hashVal = window.location.hash.substring(1);
+                console.log('hashchange:',hashVal)
                 main.innerHTML = hashVal
             }, false);
         }
