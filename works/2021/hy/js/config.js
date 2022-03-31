@@ -13,7 +13,7 @@ var config = {
     'audio':'3.mp3',
     'btn':'b12.mp3',
     'cd':'cd.mp3',
-    'img':'https://gitee.com/bindyy/img/raw/master/works/2021/hy/',
+    'img':'https://cdn.jsdelivr.net/gh/ybingyu/picgo/blogimg/works/2021/hy/',
     // 'img':'image/',
     'imgList': [
         '1-1.jpg',
